@@ -2,12 +2,12 @@
 #cython: boundscheck=False, nonecheck=False, cdivision=True
 from __future__ import print_function, division
 
+cimport cython
 cimport numpy as np
 import numpy as np
 
-
-cimport cython
-
+from cpython cimport bool as py_bool
+from libcpp cimport bool
 from libc.stdio cimport printf
 
 #from libcpp.algorithm cimport max_element
@@ -25,10 +25,13 @@ cdef extern from "optimcut.h" namespace "optimcut" nogil:
     #int ...
 
 
-cpdef void swap_order(np.ndarray[np.float64_t,ndim=1,negative_indices=False,mode='c'] state):
-    initialize(0)
+cpdef void swap_order(np.ndarray[np.float64_t,ndim=1,negative_indices=False,mode='c'] state,
+                      py_bool testing = True):
+    if (testing is True):
+        initialize(0)
     
     cdef int n = <int> state.size
     _swap_order[double](&state[0], n)
     
-    finalize()
+    if (testing is True):
+        finalize()

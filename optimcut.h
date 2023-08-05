@@ -60,23 +60,25 @@ inline void _swap_order(T* state, const int n)
 }
 
 
-/* TODO: Code functions below in C/C++
-def cuts_to_material(order, material_length):
-  material_id      = np.empty(order.size,dtype=np.int32)
-  current_length   = 0.0
-  current_material = 0
-
-  for it,slice in enumerate(order):
-    current_length += slice
-
-    if (current_length > material_length[current_material]):
-      current_length = slice
-      current_material += 1
-
-    material_id[it] = current_material
-
-  return material_id
-*/
+template <typename T>
+inline void _cuts_to_material(T* state, int* material_id, T* material_length, const int n)
+{
+    T   current_length = 0.0;
+    int current_material = 0;
+    
+    for (int it; it<n; it++)
+    {
+        current_length += state[it];
+        
+        if (current_length > material_length[current_material])
+        {
+            current_length = state[it];
+            current_material += 1;
+        }
+        
+        material_id[it] = current_material;
+    }
+}
 
 
 template <typename T>
@@ -112,46 +114,26 @@ inline T _cost_function(T* state, int* material_id, T* material_length, T* lefto
 
 
 template <typename T>
-T _reconfigure(T* state, int* material_id, T* material_length, T* leftovers, T old_costf, const int n)
+T _reconfigure(T* state, int* material_id, T* material_length, T* leftovers, const T old_costf, const int n)
 {
     T ap    = 0.0;
     T costf = 0.0;
     do {
+        // randomly swap order of two slices
         _swap_order<T>(state, n);
+        
         // get material ids
+        _cuts_to_material<T>(state, material_id, material_length, n);
+        
         // compute cost function & acceptance probability
         costf = _cost_function(state, material_id, material_length, leftovers, n);
+        
     } while(ap < random<T>());
     
-    return costf; // we need to know current cost function in next step
-}
-
-/* TODO: Code functions below in C/C++
-
-def acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=1.0):
-  return np.exp( (cost_function(order,     material_id,     material_length) - \
-                  cost_function(new_order, new_material_id, material_length)) / temp )
-
-template <typename T>
-inline T acceptance_probability(T* state, int* material_id, T* material_length, T* leftovers, const int n)
-{
-    T prob = std::exp()
+    return costf; // we need to know current cost function value in the next step
 }
 
 
-
-def step(order, material_id, material_length, temp=1.0, verbose=0):
-  ap = 0.0
-  while( (ap == 0.0) or (ap < np.random.rand()) ):
-    new_order       = swap_order(order)
-    new_material_id = cuts_to_material(new_order, material_length)
-    ap = acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=temp)
-
-  if (verbose > 0):
-    print(new_order, new_material_id,
-          cost_function(new_order, new_material_id, material_length))
-  return new_order, new_material_id
-*/
 
 
 
@@ -164,4 +146,4 @@ void finalize()
 
 
 } /* namespace optimcut */
-#endif /*__OPTIMCUT_H__*/
+#endif  /*__OPTIMCUT_H__*/
