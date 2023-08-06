@@ -1,0 +1,275 @@
+[
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib",
+        "description": "matplotlib",
+        "detail": "matplotlib",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "setup",
+        "importPath": "distutils.core",
+        "description": "distutils.core",
+        "isExtraImport": true,
+        "detail": "distutils.core",
+        "documentation": {}
+    },
+    {
+        "label": "Extension",
+        "importPath": "distutils.extension",
+        "description": "distutils.extension",
+        "isExtraImport": true,
+        "detail": "distutils.extension",
+        "documentation": {}
+    },
+    {
+        "label": "build_ext",
+        "importPath": "Cython.Distutils",
+        "description": "Cython.Distutils",
+        "isExtraImport": true,
+        "detail": "Cython.Distutils",
+        "documentation": {}
+    },
+    {
+        "label": "Cython.Compiler.Options",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "Cython.Compiler.Options",
+        "description": "Cython.Compiler.Options",
+        "detail": "Cython.Compiler.Options",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "division",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "_optimcut",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "_optimcut",
+        "description": "_optimcut",
+        "detail": "_optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "draw_",
+        "kind": 2,
+        "importPath": "optimcut",
+        "description": "optimcut",
+        "peekOfCode": "def draw_(order, material_id, material_length):\n  fig, ax = plt.subplots()\n  ax.set_xlim([0, max( [material_id.max()+2,5] )])\n  _,occ = np. unique(material_id, return_counts=True)\n  #cmap = cm.get_cmap('viridis', int(material_length.max())+1)\n  cmap = mpl.colormaps['viridis']\n  norm = mpl.colors.Normalize(vmin=0, vmax=int(material_length.max())+1)\n  for uid in np.unique(material_id):\n    bottom=0\n    order_id = order[material_id==uid]",
+        "detail": "optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "cuts_to_material",
+        "kind": 2,
+        "importPath": "optimcut",
+        "description": "optimcut",
+        "peekOfCode": "def cuts_to_material(order,material_id,material_length,cut_length=0.0):\n  current_length   = 0.0\n  current_material = 0\n  for it,slice in enumerate(order):\n    current_length += slice + cut_length\n    if (current_length > material_length[current_material]):\n      current_length = slice\n      current_material += 1\n    material_id[it] = current_material\n  return material_id",
+        "detail": "optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "material_leftovers",
+        "kind": 2,
+        "importPath": "optimcut",
+        "description": "optimcut",
+        "peekOfCode": "def material_leftovers(order, material_id, material_length):\n  leftovers = np.zeros( np.max(material_id)+1 )\n  for material in np.unique(material_id):\n    leftovers[material] = material_length[material] -              \\\n                          np.sum( order[material_id == material] )\n  return leftovers\ndef swap_order(order):\n  n = order.size\n  i = np.random.randint(n)\n  j = np.random.randint(n)",
+        "detail": "optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "swap_order",
+        "kind": 2,
+        "importPath": "optimcut",
+        "description": "optimcut",
+        "peekOfCode": "def swap_order(order):\n  n = order.size\n  i = np.random.randint(n)\n  j = np.random.randint(n)\n  while (i == j):\n    j = np.random.randint(n)\n  new_order = np.copy(order)\n  new_order[i]  = order[j]\n  new_order[j]  = order[i]\n  return new_order",
+        "detail": "optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "step",
+        "kind": 2,
+        "importPath": "optimcut",
+        "description": "optimcut",
+        "peekOfCode": "def step(order, material_id, material_length, verbose=0):\n  new_order = swap_order(order)\n  material_id = cuts_to_material(new_order,material_id,material_length)\n  leftovers = material_leftovers(new_order, material_id, material_length)\n  if (verbose > 1):\n    print(new_order, material_id)\n  return new_order\ndef cost_function(order):\n  #leftovers =\ndef material_leftovers(order, material_id, material_length):",
+        "detail": "optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "cost_function",
+        "kind": 2,
+        "importPath": "optimcut",
+        "description": "optimcut",
+        "peekOfCode": "def cost_function(order):\n  #leftovers =\ndef material_leftovers(order, material_id, material_length):\n  leftovers = np.zeros( np.max(material_id)+1 )\n  for material in np.unique(material_id):\n    leftovers[material] = material_length[material] -              \\\n                          np.sum( order[material_id == material] )\n  return leftovers",
+        "detail": "optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "material_leftovers",
+        "kind": 2,
+        "importPath": "optimcut",
+        "description": "optimcut",
+        "peekOfCode": "def material_leftovers(order, material_id, material_length):\n  leftovers = np.zeros( np.max(material_id)+1 )\n  for material in np.unique(material_id):\n    leftovers[material] = material_length[material] -              \\\n                          np.sum( order[material_id == material] )\n  return leftovers",
+        "detail": "optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "Cython.Compiler.Options.annotate",
+        "kind": 5,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "Cython.Compiler.Options.annotate = True\n\"\"\"\nusage: python setup.py build_ext --inplace\n       python setup.py install --user\n\"\"\"\next_modules = [\n    Extension( '_optimcut',\n               sources            = ['_optimcut.pyx'],\n               language           = 'c++',\n               include_dirs       = [numpy.get_include(),'.'],",
+        "detail": "setup",
+        "documentation": {}
+    },
+    {
+        "label": "ext_modules",
+        "kind": 5,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "ext_modules = [\n    Extension( '_optimcut',\n               sources            = ['_optimcut.pyx'],\n               language           = 'c++',\n               include_dirs       = [numpy.get_include(),'.'],\n               extra_compile_args = ['-std=c++11','-fopenmp','-pthread','-fPIC','-mtune=native','-march=native','-O3'],\n               extra_link_args    = ['-fopenmp','-pthread'],\n               libraries          = ['gsl','gslcblas','gomp','m'],\n               library_dirs       = ['/usr/local/lib'],\n               define_macros      = [(\"NPY_NO_DEPRECATED_API\", \"NPY_1_7_API_VERSION\")] ),",
+        "detail": "setup",
+        "documentation": {}
+    },
+    {
+        "label": "srcfile",
+        "kind": 5,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "srcfile = 'build/lib.linux-x86_64-2.7/_optimcut.so'\ndstfile = './_optimcut.so'\nassert not os.path.isabs(srcfile)\nshutil.copy(srcfile, dstfile)\nshutil.rmtree('build')\n\"\"\"",
+        "detail": "setup",
+        "documentation": {}
+    },
+    {
+        "label": "dstfile",
+        "kind": 5,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "dstfile = './_optimcut.so'\nassert not os.path.isabs(srcfile)\nshutil.copy(srcfile, dstfile)\nshutil.rmtree('build')\n\"\"\"",
+        "detail": "setup",
+        "documentation": {}
+    },
+    {
+        "label": "test_swap_order",
+        "kind": 2,
+        "importPath": "test_optimcut",
+        "description": "test_optimcut",
+        "peekOfCode": "def test_swap_order():\n    x = state.copy()\n    _optimcut.swap_order(x,testing=True) # NOTE: for testing this function always uses \n                                         #       the beginig of quasirandom sequence\n    result = np.array([1.0, 5.0, 3.0, 4.0, 2.0], dtype=np.float64, order='C') # expected result\n    assert np.allclose(x,result)\n@pytest.mark.single_function\ndef test_double_swap():\n    x = state.copy()\n    y = x.copy()",
+        "detail": "test_optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "test_double_swap",
+        "kind": 2,
+        "importPath": "test_optimcut",
+        "description": "test_optimcut",
+        "peekOfCode": "def test_double_swap():\n    x = state.copy()\n    y = x.copy()\n    _optimcut.swap_order(x,testing=True) # NOTE: for testing this function always uses \n                                         #       the beginig of quasirandom sequence.\n    _optimcut.swap_order(x,testing=True) # NOTE: double swap of same indices returns to\n                                         #       the orginal variable\n    assert np.allclose(x,y)\n@pytest.mark.single_function\ndef test_cuts_to_material():",
+        "detail": "test_optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "test_cuts_to_material",
+        "kind": 2,
+        "importPath": "test_optimcut",
+        "description": "test_optimcut",
+        "peekOfCode": "def test_cuts_to_material():\n    x = material_id.copy()\n    _optimcut.cuts_to_material(state, x, material_length, testing=True)\n    result = np.array([0,0,1,2,3], dtype=np.int32, order='C')\n    assert np.all( x == result )\n@pytest.mark.single_function\ndef test_leftovers():\n    _optimcut.cuts_to_material(state, material_id, material_length, testing=True)\n    _optimcut.material_leftovers(state, material_id, material_length, leftovers, testing=True)\n    result = np.array([2.0, 2.0, 1.0, 0.0, 0.0,], dtype=np.float64, order='C') # expected result",
+        "detail": "test_optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "test_leftovers",
+        "kind": 2,
+        "importPath": "test_optimcut",
+        "description": "test_optimcut",
+        "peekOfCode": "def test_leftovers():\n    _optimcut.cuts_to_material(state, material_id, material_length, testing=True)\n    _optimcut.material_leftovers(state, material_id, material_length, leftovers, testing=True)\n    result = np.array([2.0, 2.0, 1.0, 0.0, 0.0,], dtype=np.float64, order='C') # expected result\n    assert np.allclose(leftovers,result)\nif __name__ == '__main__':\n    x = np.array([1.0,2.0,3.0,4.0,5.0], dtype=np.float64, order='C')\n    print('Double swap order test')\n    print(x)\n    _optimcut.swap_order(x)",
+        "detail": "test_optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "material_length",
+        "kind": 5,
+        "importPath": "test_optimcut",
+        "description": "test_optimcut",
+        "peekOfCode": "material_length = np.array([5.0,5.0,5.0,5.0,5.0], dtype=np.float64, order='C')\nleftovers       = np.array([0.0,0.0,0.0,0.0,0.0], dtype=np.float64, order='C')\n@pytest.mark.single_function\ndef test_swap_order():\n    x = state.copy()\n    _optimcut.swap_order(x,testing=True) # NOTE: for testing this function always uses \n                                         #       the beginig of quasirandom sequence\n    result = np.array([1.0, 5.0, 3.0, 4.0, 2.0], dtype=np.float64, order='C') # expected result\n    assert np.allclose(x,result)\n@pytest.mark.single_function",
+        "detail": "test_optimcut",
+        "documentation": {}
+    }
+]
