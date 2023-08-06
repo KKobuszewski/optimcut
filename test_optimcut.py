@@ -16,31 +16,74 @@ usage: pytest -v test_optimcut.py
 """
 
 
+state           = np.array([1.0,2.0,3.0,4.0,5.0], dtype=np.float64, order='C')
+material_id     = np.array([  0,  0,  0,  0,  0], dtype=np.int32,   order='C')
+material_length = np.array([5.0,5.0,5.0,5.0,5.0], dtype=np.float64, order='C')
+leftovers       = np.array([0.0,0.0,0.0,0.0,0.0], dtype=np.float64, order='C')
+
+
+
+@pytest.mark.single_function
 def test_swap_order():
-    x = np.array([1.0,2.0,3.0,4.0,5.0], dtype=np.float64, order='C')
+    x = state.copy()
     _optimcut.swap_order(x,testing=True) # NOTE: for testing this function always uses 
                                          #       the beginig of quasirandom sequence
-    
-    result = np.array([1.0, 5.0, 3.0, 4.0, 2.0]) # expected result
+
+    result = np.array([1.0, 5.0, 3.0, 4.0, 2.0], dtype=np.float64, order='C') # expected result
     
     assert np.allclose(x,result)
 
+@pytest.mark.single_function
 def test_double_swap():
-    x = np.array([1.0,2.0,3.0,4.0,5.0], dtype=np.float64, order='C')
+    x = state.copy()
     y = x.copy()
     _optimcut.swap_order(x,testing=True) # NOTE: for testing this function always uses 
                                          #       the beginig of quasirandom sequence.
     _optimcut.swap_order(x,testing=True) # NOTE: double swap of same indices returns to
                                          #       the orginal variable
     assert np.allclose(x,y)
+
+@pytest.mark.single_function
+def test_cuts_to_material():
+    x = material_id.copy()
     
+    _optimcut.cuts_to_material(state, x, material_length, testing=True)
+    result = np.array([0,0,1,2,3], dtype=np.int32, order='C')
+    
+    assert np.all( x == result )
+
+@pytest.mark.single_function
+def test_leftovers():
+    _optimcut.cuts_to_material(state, material_id, material_length, testing=True)
+    _optimcut.material_leftovers(state, material_id, material_length, leftovers, testing=True)
+    
+    result = np.array([2.0, 2.0, 1.0, 0.0, 0.0,], dtype=np.float64, order='C') # expected result
+    
+    assert np.allclose(leftovers,result)
+
 
 
 if __name__ == '__main__':
     
     x = np.array([1.0,2.0,3.0,4.0,5.0], dtype=np.float64, order='C')
+    print('Double swap order test')
     print(x)
     _optimcut.swap_order(x)
     print(x)
     _optimcut.swap_order(x)
     print(x)
+    print()
+    
+    
+    print('Cuts to material id test')
+    material_id     = np.array([0,0,0,0,0], dtype=np.int32, order='C')
+    material_length = np.array([5.0,5.0,5.0,5.0,5.0], dtype=np.float64, order='C')
+    _optimcut.cuts_to_material(x, material_id, material_length, testing=True )
+    print(material_id)
+    print()
+    
+    print('Test leftovers')
+    leftovers      = np.array([0.0,0.0,0.0,0.0,0.0], dtype=np.float64, order='C')
+    _optimcut.material_leftovers(x, material_id, material_length, leftovers, testing=True )
+    print(leftovers)
+    print()
