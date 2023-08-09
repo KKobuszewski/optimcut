@@ -157,7 +157,13 @@ cdef class CutOptimizer:
             # allocate memory to save consecutive states of algorithm & initialize the first state
             self.saves      = np.empty([niter+1,self.n],dtype=np.float64,order='C')
             self.saves[0,:] = self.state[:]
+            self.costfs     = np.empty(niter+1,dtype=np.float64,order='C')
             
+            # set memoryviews
+            self.c_saves  = self.saves
+            self.c_costfs = self.costfs
+            
+            # perform iterations
             make_iterations_with_save[double](&(self.c_saves[0,0]), 
                                               &(self.c_material_id[0]), 
                                               &(self.c_material_length[0]), 
@@ -165,9 +171,8 @@ cdef class CutOptimizer:
                                               &(self.c_costfs[0]),
                                                 niter, temp, self.n)
             
-            return self.saves
-        #
-
+            return self.saves, self.costfs
+    
     # Available in Python-space:
     """
     @property
@@ -182,3 +187,25 @@ cdef class CutOptimizer:
     def period(self, value):
         self.freq = 1.0 / value
     """
+    #
+
+def material_ids_from_saves(np.ndarray[np.float64_t,ndim=2,negative_indices=False,mode='c'] saves,
+                            np.ndarray[np.float64_t,ndim=1,negative_indices=False,mode='c'] material_length):
+
+    # NOTE: [np.ndarray] causes error (see: https://stackoverflow.com/questions/35414980/cython-dimensions-is-not-a-member-of-tagpyarrayobject)
+    cdef int  n     = <int>  material_length.size
+    cdef int  niter = <int> (saves.size // n)
+
+    cdef np.ndarray[np.int32_t,ndim=2,negative_indices=False,mode='c'] material_ids = np.empty([niter,n], 
+                                                                                               dtype=np.int32,
+                                                                                               order='C')
+    
+    cdef int* c_material_ids
+    cdef double* c_saves
+
+    for it in range(niter):
+        c_material_ids = <int*>    &material_ids[it,0]
+        c_saves        = <double*> &saves[it,0]
+        _cuts_to_material[double](c_saves, c_material_ids, &material_length[0], n)
+    
+    return material_ids
