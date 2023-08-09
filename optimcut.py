@@ -7,7 +7,6 @@ import matplotlib as mpl
 
 from tqdm import tqdm
 
-
 def draw_(order, material_id, material_length):
 
   fig, ax = plt.subplots()
@@ -33,12 +32,13 @@ def draw_(order, material_id, material_length):
   plt.show()
 
 
-def cuts_to_material(order,material_id,material_length,cut_length=0.0):
+def cuts_to_material(order, material_length):
+  material_id      = np.empty(order.size,dtype=np.int32)
   current_length   = 0.0
   current_material = 0
 
   for it,slice in enumerate(order):
-    current_length += slice + cut_length
+    current_length += slice
 
     if (current_length > material_length[current_material]):
       current_length = slice
@@ -61,7 +61,7 @@ def swap_order(order):
   n = order.size
   i = np.random.randint(n)
   j = np.random.randint(n)
-  while (i == j):
+  while ((i == j) or (order[i] == order[j])):
     j = np.random.randint(n)
 
   new_order = np.copy(order)
@@ -71,23 +71,25 @@ def swap_order(order):
   return new_order
 
 
-def step(order, material_id, material_length, verbose=0):
-  new_order = swap_order(order)
+def cost_function(order,material_id, material_length):
+  leftovers = material_leftovers(order, material_id, material_length)
+  #n_materials = material_id.max()
+  return leftovers.sum() #+ leftovers.mean()*n_materials
 
-  material_id = cuts_to_material(new_order,material_id,material_length)
-  leftovers = material_leftovers(new_order, material_id, material_length)
-
-  if (verbose > 1):
-    print(new_order, material_id)
-  return new_order
-
-def cost_function(order):
-  #leftovers =
+def acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=1.0):
+  return np.exp( (cost_function(order,     material_id,     material_length) - \
+                  cost_function(new_order, new_material_id, material_length)) / temp )
 
 
-def material_leftovers(order, material_id, material_length):
-  leftovers = np.zeros( np.max(material_id)+1 )
-  for material in np.unique(material_id):
-    leftovers[material] = material_length[material] -              \
-                          np.sum( order[material_id == material] )
-  return leftovers
+def step(order, material_id, material_length, temp=1.0, verbose=0):
+  #new_order = order.copy()
+  ap = 0.0
+  while( (ap == 0.0) or (ap < np.random.rand()) ):
+    new_order       = swap_order(order)
+    new_material_id = cuts_to_material(new_order, material_length)
+    ap = acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=temp)
+
+  if (verbose > 0):
+    print(new_order, new_material_id,
+          cost_function(new_order, new_material_id, material_length))
+  return new_order, new_material_id

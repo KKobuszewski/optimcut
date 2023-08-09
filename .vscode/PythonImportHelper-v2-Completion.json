@@ -102,6 +102,22 @@
         "documentation": {}
     },
     {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "division",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
         "label": "pytest",
         "kind": 6,
         "isExtraImport": true,
@@ -142,7 +158,7 @@
         "kind": 2,
         "importPath": "optimcut",
         "description": "optimcut",
-        "peekOfCode": "def cuts_to_material(order,material_id,material_length,cut_length=0.0):\n  current_length   = 0.0\n  current_material = 0\n  for it,slice in enumerate(order):\n    current_length += slice + cut_length\n    if (current_length > material_length[current_material]):\n      current_length = slice\n      current_material += 1\n    material_id[it] = current_material\n  return material_id",
+        "peekOfCode": "def cuts_to_material(order, material_length):\n  material_id      = np.empty(order.size,dtype=np.int32)\n  current_length   = 0.0\n  current_material = 0\n  for it,slice in enumerate(order):\n    current_length += slice\n    if (current_length > material_length[current_material]):\n      current_length = slice\n      current_material += 1\n    material_id[it] = current_material",
         "detail": "optimcut",
         "documentation": {}
     },
@@ -160,16 +176,7 @@
         "kind": 2,
         "importPath": "optimcut",
         "description": "optimcut",
-        "peekOfCode": "def swap_order(order):\n  n = order.size\n  i = np.random.randint(n)\n  j = np.random.randint(n)\n  while (i == j):\n    j = np.random.randint(n)\n  new_order = np.copy(order)\n  new_order[i]  = order[j]\n  new_order[j]  = order[i]\n  return new_order",
-        "detail": "optimcut",
-        "documentation": {}
-    },
-    {
-        "label": "step",
-        "kind": 2,
-        "importPath": "optimcut",
-        "description": "optimcut",
-        "peekOfCode": "def step(order, material_id, material_length, verbose=0):\n  new_order = swap_order(order)\n  material_id = cuts_to_material(new_order,material_id,material_length)\n  leftovers = material_leftovers(new_order, material_id, material_length)\n  if (verbose > 1):\n    print(new_order, material_id)\n  return new_order\ndef cost_function(order):\n  #leftovers =\ndef material_leftovers(order, material_id, material_length):",
+        "peekOfCode": "def swap_order(order):\n  n = order.size\n  i = np.random.randint(n)\n  j = np.random.randint(n)\n  while ((i == j) or (order[i] == order[j])):\n    j = np.random.randint(n)\n  new_order = np.copy(order)\n  new_order[i]  = order[j]\n  new_order[j]  = order[i]\n  return new_order",
         "detail": "optimcut",
         "documentation": {}
     },
@@ -178,16 +185,25 @@
         "kind": 2,
         "importPath": "optimcut",
         "description": "optimcut",
-        "peekOfCode": "def cost_function(order):\n  #leftovers =\ndef material_leftovers(order, material_id, material_length):\n  leftovers = np.zeros( np.max(material_id)+1 )\n  for material in np.unique(material_id):\n    leftovers[material] = material_length[material] -              \\\n                          np.sum( order[material_id == material] )\n  return leftovers",
+        "peekOfCode": "def cost_function(order,material_id, material_length):\n  leftovers = material_leftovers(order, material_id, material_length)\n  #n_materials = material_id.max()\n  return leftovers.sum() #+ leftovers.mean()*n_materials\ndef acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=1.0):\n  return np.exp( (cost_function(order,     material_id,     material_length) - \\\n                  cost_function(new_order, new_material_id, material_length)) / temp )\ndef step(order, material_id, material_length, temp=1.0, verbose=0):\n  #new_order = order.copy()\n  ap = 0.0",
         "detail": "optimcut",
         "documentation": {}
     },
     {
-        "label": "material_leftovers",
+        "label": "acceptance_probability",
         "kind": 2,
         "importPath": "optimcut",
         "description": "optimcut",
-        "peekOfCode": "def material_leftovers(order, material_id, material_length):\n  leftovers = np.zeros( np.max(material_id)+1 )\n  for material in np.unique(material_id):\n    leftovers[material] = material_length[material] -              \\\n                          np.sum( order[material_id == material] )\n  return leftovers",
+        "peekOfCode": "def acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=1.0):\n  return np.exp( (cost_function(order,     material_id,     material_length) - \\\n                  cost_function(new_order, new_material_id, material_length)) / temp )\ndef step(order, material_id, material_length, temp=1.0, verbose=0):\n  #new_order = order.copy()\n  ap = 0.0\n  while( (ap == 0.0) or (ap < np.random.rand()) ):\n    new_order       = swap_order(order)\n    new_material_id = cuts_to_material(new_order, material_length)\n    ap = acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=temp)",
+        "detail": "optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "step",
+        "kind": 2,
+        "importPath": "optimcut",
+        "description": "optimcut",
+        "peekOfCode": "def step(order, material_id, material_length, temp=1.0, verbose=0):\n  #new_order = order.copy()\n  ap = 0.0\n  while( (ap == 0.0) or (ap < np.random.rand()) ):\n    new_order       = swap_order(order)\n    new_material_id = cuts_to_material(new_order, material_length)\n    ap = acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=temp)\n  if (verbose > 0):\n    print(new_order, new_material_id,\n          cost_function(new_order, new_material_id, material_length))",
         "detail": "optimcut",
         "documentation": {}
     },
@@ -259,7 +275,7 @@
         "kind": 2,
         "importPath": "test_optimcut",
         "description": "test_optimcut",
-        "peekOfCode": "def test_leftovers():\n    _optimcut.cuts_to_material(state, material_id, material_length, testing=True)\n    _optimcut.material_leftovers(state, material_id, material_length, leftovers, testing=True)\n    result = np.array([2.0, 2.0, 1.0, 0.0, 0.0,], dtype=np.float64, order='C') # expected result\n    assert np.allclose(leftovers,result)\nif __name__ == '__main__':\n    x = np.array([1.0,2.0,3.0,4.0,5.0], dtype=np.float64, order='C')\n    print('Double swap order test')\n    print(x)\n    _optimcut.swap_order(x)",
+        "peekOfCode": "def test_leftovers():\n    _optimcut.cuts_to_material(state, material_id, material_length, testing=True)\n    _optimcut.material_leftovers(state, material_id, material_length, leftovers, testing=True)\n    result = np.array([2.0, 2.0, 1.0, 0.0, 0.0,], dtype=np.float64, order='C') # expected result\n    assert np.allclose(leftovers,result)\nif __name__ == '__main__':\n    x = np.array([1.0,2.0,3.0,4.0,5.0], dtype=np.float64, order='C')\n    print('# Double swap order test')\n    print(x)\n    _optimcut.swap_order(x,testing=True)",
         "detail": "test_optimcut",
         "documentation": {}
     },

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cmath>
 #include <numeric>
+#include <algorithm>
 #include <gsl/gsl_qrng.h>
 #include <string.h>
 #include <float.h>
@@ -46,14 +47,14 @@ inline T random()
 template <typename T>
 inline void _swap_order(T* state, const int n)
 {
-  // draw two different quasirandom numbers
-  double v[2];
-  gsl_qrng_get(q, v);
+  // generate two different quasirandom numbers from 0.0 to 1.0, inclusive.
+  double v[2] = {0.0,0.0};
+  //gsl_qrng_get(q, v);
   while (v[0] == v[1]) { gsl_qrng_get (q, v); }
   
   // cast quasirandom numbers to indexes of array
-  const int i = static_cast<int>( std::round(v[0]*n) );
-  const int j = static_cast<int>( std::round(v[1]*n) );
+  const int i = static_cast<int>( std::round(v[0]*(n-1.0)) );
+  const int j = static_cast<int>( std::round(v[1]*(n-1.0)) );
   
   const T tmp = state[i];
   state[i] = state[j];
@@ -87,8 +88,9 @@ inline void _material_leftovers(T* state, int* material_id, T* material_length, 
 {
     // set leftovers array to zeros
     // (see: https://stackoverflow.com/questions/9146395/reset-c-int-array-to-zero-the-fastest-way)
-    memset(leftovers, 0, n*sizeof(*leftovers));
-    
+    //memset(leftovers, 0, static_cast<size_t>(n)*sizeof(*leftovers));
+    std::fill(leftovers,leftovers+n,0.0);
+
     int current_id = 0;
     T sum = 0.0;
     for (int it=0; it<n; it++)
@@ -129,7 +131,7 @@ T _reconfigure(T* state, int* material_id, T* material_length, T* leftovers,
         
         // compute cost function & acceptance probability
         costf = _cost_function<T>(state, material_id, material_length, leftovers, n);
-        ap = std::exp( old_costf - costf ); // old_cost > costf  =>  ap > 1
+        ap = std::exp( (old_costf - costf)/temp ); // old_cost > costf  =>  ap > 1
     } while (ap < random<T>());             // accept new config. if ap > random num. from [0,1]
     
     return costf; // we need to know current cost function value in the next step
@@ -141,7 +143,7 @@ void make_iterations(T* state, int* material_id, T* material_length, T* leftover
 {
     // get material ids & compute cost function
     _cuts_to_material<T>(state, material_id, material_length, n);
-    T costf      = _cost_function(state, material_id, material_length, leftovers, n);
+    T costf      = _cost_function<T>(state, material_id, material_length, leftovers, n);
     
     // mem buffer to store best solution
     T  best_costf = static_cast<T>( FLT_MAX ); // T could be possible float or double, so should be large enough
@@ -162,7 +164,7 @@ void make_iterations(T* state, int* material_id, T* material_length, T* leftover
 
     // while number of required reconfigurations is done, fill state array with best solution and clear mem
     for (int jt=0; jt<n; jt++) { state[jt] = best_state[jt]; }
-    delete best_state;
+    delete[] best_state;
 }
 
 

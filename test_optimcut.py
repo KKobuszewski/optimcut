@@ -66,24 +66,49 @@ def test_leftovers():
 if __name__ == '__main__':
     
     x = np.array([1.0,2.0,3.0,4.0,5.0], dtype=np.float64, order='C')
-    print('Double swap order test')
+    print('# Double swap order test')
     print(x)
-    _optimcut.swap_order(x)
+    _optimcut.swap_order(x,testing=True)
     print(x)
-    _optimcut.swap_order(x)
+    _optimcut.swap_order(x,testing=True)
     print(x)
     print()
     
     
-    print('Cuts to material id test')
+    print('# Cuts to material id test')
     material_id     = np.array([0,0,0,0,0], dtype=np.int32, order='C')
     material_length = np.array([5.0,5.0,5.0,5.0,5.0], dtype=np.float64, order='C')
     _optimcut.cuts_to_material(x, material_id, material_length, testing=True )
     print(material_id)
     print()
     
-    print('Test leftovers')
+    print('# Test leftovers')
     leftovers      = np.array([0.0,0.0,0.0,0.0,0.0], dtype=np.float64, order='C')
     _optimcut.material_leftovers(x, material_id, material_length, leftovers, testing=True )
     print(leftovers)
     print()
+    
+    print('# Test class CutOptimizer')
+    state = np.array([1.0,2.0,3.0,4.0,5.0], dtype=np.float64, order='F')
+    _optimcut.initialize_qrng()
+    copt = _optimcut.CutOptimizer(state,material_length)
+    print(' material lengths: ',copt.material_length)
+    print(' initial state:    ',copt.state)
+    copt.make_iterations(100,10000) # make single iteration
+    print(' next state:       ',copt.state)
+    copt.make_iterations(100,10000) # make single iteration
+    print(' next state:       ',copt.state)
+    _optimcut.finalize_qrng()
+    
+    """
+    x = np.array([1.0,2.0,3.0,4.0,5.0], dtype=np.float64, order='C')
+    print('# Multiple swap order test')
+    print(x)
+    _optimcut.initialize_qrng()
+    for i in range(100):
+        _optimcut.swap_order(x,testing=False)
+        print(x)
+    _optimcut.finalize_qrng()
+    """
+    
+    
