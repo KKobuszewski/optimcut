@@ -35,6 +35,15 @@
         "documentation": {}
     },
     {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
         "label": "setup",
         "importPath": "distutils.core",
         "description": "distutils.core",
@@ -65,6 +74,14 @@
         "importPath": "Cython.Compiler.Options",
         "description": "Cython.Compiler.Options",
         "detail": "Cython.Compiler.Options",
+        "documentation": {}
+    },
+    {
+        "label": "cythonize",
+        "importPath": "Cython.Build",
+        "description": "Cython.Build",
+        "isExtraImport": true,
+        "detail": "Cython.Build",
         "documentation": {}
     },
     {
@@ -124,15 +141,6 @@
         "importPath": "pytest",
         "description": "pytest",
         "detail": "pytest",
-        "documentation": {}
-    },
-    {
-        "label": "sys",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
         "documentation": {}
     },
     {
@@ -212,7 +220,7 @@
         "kind": 5,
         "importPath": "setup",
         "description": "setup",
-        "peekOfCode": "Cython.Compiler.Options.annotate = True\n\"\"\"\nusage: python setup.py build_ext --inplace\n       python setup.py install --user\n\"\"\"\next_modules = [\n    Extension( '_optimcut',\n               sources            = ['_optimcut.pyx'],\n               language           = 'c++',\n               include_dirs       = [numpy.get_include(),'.'],",
+        "peekOfCode": "Cython.Compiler.Options.annotate = True\nfrom Cython.Build import cythonize\n\"\"\"\nusage: python setup.py build_ext --inplace\n       python setup.py install --user\n\"\"\"\nprint('Compiling for')\nprint(sys.version)\nprint()\next_modules = [",
         "detail": "setup",
         "documentation": {}
     },
@@ -221,7 +229,7 @@
         "kind": 5,
         "importPath": "setup",
         "description": "setup",
-        "peekOfCode": "ext_modules = [\n    Extension( '_optimcut',\n               sources            = ['_optimcut.pyx'],\n               language           = 'c++',\n               include_dirs       = [numpy.get_include(),'.'],\n               extra_compile_args = ['-std=c++11','-fopenmp','-pthread','-fPIC','-mtune=native','-march=native','-O3'],\n               extra_link_args    = ['-fopenmp','-pthread'],\n               libraries          = ['gsl','gslcblas','gomp','m'],\n               library_dirs       = ['/usr/local/lib'],\n               define_macros      = [(\"NPY_NO_DEPRECATED_API\", \"NPY_1_7_API_VERSION\")] ),",
+        "peekOfCode": "ext_modules = [\n    Extension( '_optimcut',\n               sources             = ['_optimcut.pyx'],\n               language            = 'c++',\n               include_dirs        = [numpy.get_include(),'.'],\n               extra_compile_args  = ['-std=c++11','-fopenmp','-pthread','-fPIC','-mtune=native','-march=native','-O3'],\n               extra_link_args     = ['-fopenmp','-pthread'],\n               libraries           = ['gsl','gslcblas','gomp','m'],\n               library_dirs        = ['/usr/local/lib'],\n               define_macros       = [(\"NPY_NO_DEPRECATED_API\", \"NPY_1_7_API_VERSION\")] ),",
         "detail": "setup",
         "documentation": {}
     },
