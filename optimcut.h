@@ -47,18 +47,19 @@ inline T random()
 template <typename T>
 inline void _swap_order(T* state, const int n)
 {
-  // generate two different quasirandom numbers from 0.0 to 1.0, inclusive.
-  double v[2] = {0.0,0.0};
-  //gsl_qrng_get(q, v);
-  while (v[0] == v[1]) { gsl_qrng_get (q, v); }
-  
-  // cast quasirandom numbers to indexes of array
-  const int i = static_cast<int>( std::round(v[0]*(n-1.0)) );
-  const int j = static_cast<int>( std::round(v[1]*(n-1.0)) );
-  
-  const T tmp = state[i];
-  state[i] = state[j];
-  state[j] = tmp;
+    // generate two different quasirandom numbers from 0.0 to 1.0, inclusive.
+    double v[2] = {0.0,0.0};
+    //gsl_qrng_get(q, v);
+    //while (v[0] == v[1]) { gsl_qrng_get (q, v); }
+    while (v[0] == v[1]) { v[0] = random<T>(); v[1] = random<T>(); }
+    
+    // cast quasirandom numbers to indexes of array
+    const int i = static_cast<int>( std::round(v[0]*(n-1.0)) );
+    const int j = static_cast<int>( std::round(v[1]*(n-1.0)) );
+    
+    const T tmp = state[i];
+    state[i] = state[j];
+    state[j] = tmp;
 }
 
 
