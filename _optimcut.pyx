@@ -13,6 +13,11 @@ from libc.stdio cimport printf
 #from libcpp.algorithm cimport max_element
 #cdef extern from "<algorithm>" namespace "std":
 
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import matplotlib.animation
+
+
 
 # https://cvanelteren.github.io/post/cython_templates/
 
@@ -209,3 +214,44 @@ def material_ids_from_saves(np.ndarray[np.float64_t,ndim=2,negative_indices=Fals
         _cuts_to_material[double](c_saves, c_material_ids, &material_length[0], n)
     
     return material_ids
+
+
+
+
+
+def visualize_algorithm(saves, material_ids, material_length,fps=30):
+  # prepare figure
+  fig, ax = plt.subplots()
+  ax.set_xlim([0, max( [material_length.size+1,5] )])
+  ax.set_xlabel("Material ID")
+  ax.set_ylabel("Material length")
+  cmap = mpl.colormaps['viridis']
+  norm = mpl.colors.Normalize(vmin=0, vmax=int(material_length.max())+1)
+
+  # draw material (setup background)
+  for uid,ml in enumerate(material_length):
+    p = ax.bar(uid+1, ml, fill=False, edgecolor='black')
+
+  ims = []
+  for it in range( saves.shape[0] ):
+
+    order = saves[it,:]
+    xs      = []
+    heights = []
+    bottoms = []
+    for uid in np.unique(material_ids[it,:]):
+      bottom=0
+      order_id = order[material_ids[it,:]==uid]
+
+      for (i,id_) in enumerate(order_id):
+        xs.append(uid+1)
+        heights.append(id_)
+        bottoms.append(bottom)
+        bottom += id_
+
+    # draw slices
+    barcollection = ax.bar(xs, heights, bottom=bottoms, color=cmap(norm(xs)), edgecolor='darkgrey')
+    ims.append(barcollection)
+  #
+  ani = matplotlib.animation.ArtistAnimation(fig, ims, interval=1000/fps, blit=True,repeat_delay=1000)
+  return ani.to_html5_video()

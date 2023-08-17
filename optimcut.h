@@ -103,7 +103,9 @@ inline void _material_leftovers(T* state, int* material_id, T* material_length, 
         }
         sum += state[it];
     }
-    
+    // NOTE: Loop ends before counting last leftover
+    // need to find last leftover 
+    leftovers[current_id] = material_length[current_id] - sum;
     
 }
 
