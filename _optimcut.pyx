@@ -26,7 +26,7 @@ import matplotlib.animation
 cdef extern from "optimcut.h" namespace "optimcut" nogil:
     void initialize(int seed)
     void finalize()
-    void _swap_order[T](T* state, int n)
+    void _swap_order[T](T* old_state, T* new_state, int n)
     void _cuts_to_material[T](T* state, int* material_id, T* material_length, int n)
     void _material_leftovers[T](T* state, int* material_id, T* material_length, T* leftovers, int n)
     void make_iterations[T](T* state, int* material_id, T* material_length, T* leftovers, 
@@ -49,7 +49,7 @@ cpdef void swap_order( np.ndarray[np.float64_t,ndim=1,negative_indices=False,mod
         initialize(0)
     
     cdef int n = <int> state.size
-    _swap_order[double](&state[0], n)
+    _swap_order[double](&state[0],&state[0], n) # NOTE: doing swap inplace
     
     if (testing is True):
         finalize()

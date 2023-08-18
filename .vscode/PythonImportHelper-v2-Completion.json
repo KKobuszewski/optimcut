@@ -1,11 +1,86 @@
 [
     {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "division",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "division",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "division",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "numpy",
         "description": "numpy",
         "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "scipy.integrate",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "scipy.integrate",
+        "description": "scipy.integrate",
+        "detail": "scipy.integrate",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "_optimcut",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "_optimcut",
+        "description": "_optimcut",
+        "detail": "_optimcut",
         "documentation": {}
     },
     {
@@ -32,15 +107,6 @@
         "description": "tqdm",
         "isExtraImport": true,
         "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "sys",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
         "documentation": {}
     },
     {
@@ -103,38 +169,6 @@
         "documentation": {}
     },
     {
-        "label": "print_function",
-        "importPath": "__future__",
-        "description": "__future__",
-        "isExtraImport": true,
-        "detail": "__future__",
-        "documentation": {}
-    },
-    {
-        "label": "division",
-        "importPath": "__future__",
-        "description": "__future__",
-        "isExtraImport": true,
-        "detail": "__future__",
-        "documentation": {}
-    },
-    {
-        "label": "print_function",
-        "importPath": "__future__",
-        "description": "__future__",
-        "isExtraImport": true,
-        "detail": "__future__",
-        "documentation": {}
-    },
-    {
-        "label": "division",
-        "importPath": "__future__",
-        "description": "__future__",
-        "isExtraImport": true,
-        "detail": "__future__",
-        "documentation": {}
-    },
-    {
         "label": "pytest",
         "kind": 6,
         "isExtraImport": true,
@@ -144,12 +178,30 @@
         "documentation": {}
     },
     {
-        "label": "_optimcut",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "_optimcut",
-        "description": "_optimcut",
-        "detail": "_optimcut",
+        "label": "material_length",
+        "kind": 5,
+        "importPath": "bigger_Example",
+        "description": "bigger_Example",
+        "peekOfCode": "material_length = np.zeros_like(state)+1000; material_length[0] = 1000;\n#_optimcut.initialize_qrng()\ncopt = _optimcut.CutOptimizer(state,material_length)\nprint(' material lengths: ',copt.material_length)\nprint(' initial state:    ',copt.state)\nsaves, costfs = copt.make_iterations(_state=state,py_niter=10000,py_temp=100,save_states=True)\nmaterial_ids[:] = _optimcut.material_ids_from_saves(saves, material_length)\n#_optimcut.finalize_qrng()",
+        "detail": "bigger_Example",
+        "documentation": {}
+    },
+    {
+        "label": "copt",
+        "kind": 5,
+        "importPath": "bigger_Example",
+        "description": "bigger_Example",
+        "peekOfCode": "copt = _optimcut.CutOptimizer(state,material_length)\nprint(' material lengths: ',copt.material_length)\nprint(' initial state:    ',copt.state)\nsaves, costfs = copt.make_iterations(_state=state,py_niter=10000,py_temp=100,save_states=True)\nmaterial_ids[:] = _optimcut.material_ids_from_saves(saves, material_length)\n#_optimcut.finalize_qrng()",
+        "detail": "bigger_Example",
+        "documentation": {}
+    },
+    {
+        "label": "material_ids[:]",
+        "kind": 5,
+        "importPath": "bigger_Example",
+        "description": "bigger_Example",
+        "peekOfCode": "material_ids[:] = _optimcut.material_ids_from_saves(saves, material_length)\n#_optimcut.finalize_qrng()",
+        "detail": "bigger_Example",
         "documentation": {}
     },
     {
