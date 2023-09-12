@@ -2,7 +2,6 @@
 #-*- coding: utf-8 -*-
 from __future__ import print_function, division
 
-import pytest
 import numpy as np                                                        # Numpy
 #import matplotlib.pyplot as plt                                           # Plottting
 
