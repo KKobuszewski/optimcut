@@ -129,7 +129,7 @@ T _reconfigure(T* old_state, T* new_state, int* material_id, T* material_length,
     int cnt = 0;
     do {
         // randomly swap order of two slices on new_state
-        for (int i=0; i<n; i++) { new_state[i] == old_state[i]; }
+        for (int i=0; i<n; i++) { new_state[i] = old_state[i]; }
         _swap_order<T>(old_state, new_state, n);
         
         // get material ids
