@@ -26,9 +26,7 @@ Swaps are repeated many times sampling different configurations of cutting the s
 
 **Acceptance probability** is given by
 
-$
-P_{acceptance} = \exp\left[ \frac{f_i - f_{i+1}}{T} \right]
-$
+$$P_{acceptance} = \exp\left[ \frac{f_i - f_{i+1}}{T} \right]$$
 
 $f_i$     - cost function value for configuration in $i$-th step of algorithm
 
