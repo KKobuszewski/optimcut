@@ -35,7 +35,7 @@ $f_{i+1}$ - cost function value for configuration in the next step
 $T$       - parameter regulating acceptance probablity (usually called 'temperature')
 
 
-The form of acceptance means that in every case while new configuration is better than before swapping slices we accept new configuration ( $f_{i+1} \leq f_i ~\implies~ P_{acc} \geq 1$ ), however while new configuration is worse we accept it with some probability ( $f_{i+1} > f_i ~\implies~ P_{acc} \in (0,1)$ ).
+The form of acceptance means that in every case while new configuration is better than before swapping slices we accept new configuration ( $`f_{i+1} \leq f_i ~\implies~ P_{acc} \geq 1`$ ), however while new configuration is worse we accept it with some probability ( $`f_{i+1} > f_i ~\implies~ P_{acc} \in (0,1)`$ ).
 
 <br>
 
