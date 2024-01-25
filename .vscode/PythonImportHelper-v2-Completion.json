@@ -64,21 +64,21 @@
         "documentation": {}
     },
     {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "numpy",
         "description": "numpy",
         "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "scipy.integrate",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "scipy.integrate",
-        "description": "scipy.integrate",
-        "detail": "scipy.integrate",
         "documentation": {}
     },
     {
@@ -97,6 +97,15 @@
         "importPath": "_optimcut",
         "description": "_optimcut",
         "detail": "_optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "scipy.integrate",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "scipy.integrate",
+        "description": "scipy.integrate",
+        "detail": "scipy.integrate",
         "documentation": {}
     },
     {
@@ -185,15 +194,6 @@
         "documentation": {}
     },
     {
-        "label": "pytest",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pytest",
-        "description": "pytest",
-        "detail": "pytest",
-        "documentation": {}
-    },
-    {
         "label": "subprocess",
         "kind": 6,
         "isExtraImport": true,
@@ -209,6 +209,51 @@
         "importPath": "matplotlib.animation",
         "description": "matplotlib.animation",
         "detail": "matplotlib.animation",
+        "documentation": {}
+    },
+    {
+        "label": "test_swap_order",
+        "kind": 2,
+        "importPath": "test.test_optimcut",
+        "description": "test.test_optimcut",
+        "peekOfCode": "def test_swap_order():\n    x = state.copy()\n    _optimcut.swap_order(x,testing=True) # NOTE: for testing this function always uses \n                                         #       the beginig of quasirandom sequence\n    result = np.array([1.0, 5.0, 3.0, 4.0, 2.0], dtype=np.float64, order='C') # expected result\n    assert np.allclose(x,result)\n@pytest.mark.single_function\ndef test_double_swap():\n    x = state.copy()\n    y = x.copy()",
+        "detail": "test.test_optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "test_double_swap",
+        "kind": 2,
+        "importPath": "test.test_optimcut",
+        "description": "test.test_optimcut",
+        "peekOfCode": "def test_double_swap():\n    x = state.copy()\n    y = x.copy()\n    _optimcut.swap_order(x,testing=True) # NOTE: for testing this function always uses \n                                         #       the beginig of quasirandom sequence.\n    _optimcut.swap_order(x,testing=True) # NOTE: double swap of same indices returns to\n                                         #       the orginal variable\n    assert np.allclose(x,y)\n@pytest.mark.single_function\ndef test_cuts_to_material():",
+        "detail": "test.test_optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "test_cuts_to_material",
+        "kind": 2,
+        "importPath": "test.test_optimcut",
+        "description": "test.test_optimcut",
+        "peekOfCode": "def test_cuts_to_material():\n    x = material_id.copy()\n    _optimcut.cuts_to_material(state, x, material_length, testing=True)\n    result = np.array([0,0,1,2,3], dtype=np.int32, order='C')\n    assert np.all( x == result )\n@pytest.mark.single_function\ndef test_leftovers():\n    _optimcut.cuts_to_material(state, material_id, material_length, testing=True)\n    _optimcut.material_leftovers(state, material_id, material_length, leftovers, testing=True)\n    result = np.array([2.0, 2.0, 1.0, 0.0, 0.0,], dtype=np.float64, order='C') # expected result",
+        "detail": "test.test_optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "test_leftovers",
+        "kind": 2,
+        "importPath": "test.test_optimcut",
+        "description": "test.test_optimcut",
+        "peekOfCode": "def test_leftovers():\n    _optimcut.cuts_to_material(state, material_id, material_length, testing=True)\n    _optimcut.material_leftovers(state, material_id, material_length, leftovers, testing=True)\n    result = np.array([2.0, 2.0, 1.0, 0.0, 0.0,], dtype=np.float64, order='C') # expected result\n    assert np.allclose(leftovers,result)\nif __name__ == '__main__':\n    x = np.array([1.0,2.0,3.0,4.0,5.0], dtype=np.float64, order='C')\n    print('# Double swap order test')\n    print(x)\n    _optimcut.swap_order(x,testing=True)",
+        "detail": "test.test_optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "material_length",
+        "kind": 5,
+        "importPath": "test.test_optimcut",
+        "description": "test.test_optimcut",
+        "peekOfCode": "material_length = np.array([5.0,5.0,5.0,5.0,5.0], dtype=np.float64, order='C')\nleftovers       = np.array([0.0,0.0,0.0,0.0,0.0], dtype=np.float64, order='C')\n@pytest.mark.single_function\ndef test_swap_order():\n    x = state.copy()\n    _optimcut.swap_order(x,testing=True) # NOTE: for testing this function always uses \n                                         #       the beginig of quasirandom sequence\n    result = np.array([1.0, 5.0, 3.0, 4.0, 2.0], dtype=np.float64, order='C') # expected result\n    assert np.allclose(x,result)\n@pytest.mark.single_function",
+        "detail": "test.test_optimcut",
         "documentation": {}
     },
     {
@@ -365,48 +410,12 @@
         "documentation": {}
     },
     {
-        "label": "test_swap_order",
+        "label": "visualize_state",
         "kind": 2,
-        "importPath": "test_optimcut",
-        "description": "test_optimcut",
-        "peekOfCode": "def test_swap_order():\n    x = state.copy()\n    _optimcut.swap_order(x,testing=True) # NOTE: for testing this function always uses \n                                         #       the beginig of quasirandom sequence\n    result = np.array([1.0, 5.0, 3.0, 4.0, 2.0], dtype=np.float64, order='C') # expected result\n    assert np.allclose(x,result)\n@pytest.mark.single_function\ndef test_double_swap():\n    x = state.copy()\n    y = x.copy()",
-        "detail": "test_optimcut",
-        "documentation": {}
-    },
-    {
-        "label": "test_double_swap",
-        "kind": 2,
-        "importPath": "test_optimcut",
-        "description": "test_optimcut",
-        "peekOfCode": "def test_double_swap():\n    x = state.copy()\n    y = x.copy()\n    _optimcut.swap_order(x,testing=True) # NOTE: for testing this function always uses \n                                         #       the beginig of quasirandom sequence.\n    _optimcut.swap_order(x,testing=True) # NOTE: double swap of same indices returns to\n                                         #       the orginal variable\n    assert np.allclose(x,y)\n@pytest.mark.single_function\ndef test_cuts_to_material():",
-        "detail": "test_optimcut",
-        "documentation": {}
-    },
-    {
-        "label": "test_cuts_to_material",
-        "kind": 2,
-        "importPath": "test_optimcut",
-        "description": "test_optimcut",
-        "peekOfCode": "def test_cuts_to_material():\n    x = material_id.copy()\n    _optimcut.cuts_to_material(state, x, material_length, testing=True)\n    result = np.array([0,0,1,2,3], dtype=np.int32, order='C')\n    assert np.all( x == result )\n@pytest.mark.single_function\ndef test_leftovers():\n    _optimcut.cuts_to_material(state, material_id, material_length, testing=True)\n    _optimcut.material_leftovers(state, material_id, material_length, leftovers, testing=True)\n    result = np.array([2.0, 2.0, 1.0, 0.0, 0.0,], dtype=np.float64, order='C') # expected result",
-        "detail": "test_optimcut",
-        "documentation": {}
-    },
-    {
-        "label": "test_leftovers",
-        "kind": 2,
-        "importPath": "test_optimcut",
-        "description": "test_optimcut",
-        "peekOfCode": "def test_leftovers():\n    _optimcut.cuts_to_material(state, material_id, material_length, testing=True)\n    _optimcut.material_leftovers(state, material_id, material_length, leftovers, testing=True)\n    result = np.array([2.0, 2.0, 1.0, 0.0, 0.0,], dtype=np.float64, order='C') # expected result\n    assert np.allclose(leftovers,result)\nif __name__ == '__main__':\n    x = np.array([1.0,2.0,3.0,4.0,5.0], dtype=np.float64, order='C')\n    print('# Double swap order test')\n    print(x)\n    _optimcut.swap_order(x,testing=True)",
-        "detail": "test_optimcut",
-        "documentation": {}
-    },
-    {
-        "label": "material_length",
-        "kind": 5,
-        "importPath": "test_optimcut",
-        "description": "test_optimcut",
-        "peekOfCode": "material_length = np.array([5.0,5.0,5.0,5.0,5.0], dtype=np.float64, order='C')\nleftovers       = np.array([0.0,0.0,0.0,0.0,0.0], dtype=np.float64, order='C')\n@pytest.mark.single_function\ndef test_swap_order():\n    x = state.copy()\n    _optimcut.swap_order(x,testing=True) # NOTE: for testing this function always uses \n                                         #       the beginig of quasirandom sequence\n    result = np.array([1.0, 5.0, 3.0, 4.0, 2.0], dtype=np.float64, order='C') # expected result\n    assert np.allclose(x,result)\n@pytest.mark.single_function",
-        "detail": "test_optimcut",
+        "importPath": "visualization0",
+        "description": "visualization0",
+        "peekOfCode": "def visualize_state(state, material_id, material_length, costf=None, colors=None, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots(figsize=[25.0,5.0])\n  #                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ax.set_xlabel(\"Length\")\n  #ax.set_ylabel(\"Material length\")\n  ax.set_axis_off()\n  cmap = mpl.colormaps['hsv']\n  norm = mpl.colors.Normalize(vmin=0, vmax=int(material_length.max())+1)\n  # draw material (setup background)",
+        "detail": "visualization0",
         "documentation": {}
     },
     {
