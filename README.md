@@ -18,14 +18,17 @@ better memory efficiency
 
 We assume that slices are cut in certain order and while material piece is too small for the next cut slice is moved to the next material piece.
 
+![](https://github.com/KKobuszewski/optimcut/blob/main/figs/visualization0.gif)
+
 Annealing algorithm randomly swaps two slices and decides if swap is accepted with acceptance probability depending on the amount of leftovers.
 
 Swaps are repeated many times sampling different configurations of cutting the slices. This kind of 'random walk' in the space of configuration is concentrated 'near' the points with locally smallest cost function (this function could be simply length of leftovers) and gives high probability of visiting best configurations.
 
 **Acceptance probability** is given by
-$$
+
+$
 P_{acceptance} = \exp\left[ \frac{f_i - f_{i+1}}{T} \right]
-$$
+$
 
 $f_i$     - cost function value for configuration in $i$-th step of algorithm
 
