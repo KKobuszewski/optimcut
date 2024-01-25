@@ -1,5 +1,5 @@
 # optimcut
-Simple library to optimize leftovers from cutting slices from longer material pieces (single dimension).
+Simple library to optimize leftovers from cutting slices from longer material pieces in one dimension - so called **Cutting Stock Problem**.
 
 <br>
 
@@ -41,7 +41,18 @@ The form of acceptance means that in every case while new configuration is bette
 
 
 
-# Cutting 
+# Classical solution to Cutting Stock Problem 
+
+Column generation method
+
+https://en.wikipedia.org/wiki/Cutting_stock_problem
+
+https://jump.dev/JuMP.jl/stable/tutorials/algorithms/cutting_stock_column_generation/
+
+<br>
+
+
+https://en.wikipedia.org/wiki/Column_generation
 
 https://youtu.be/O918V86Grhc?si=vMTUiuFVCakP0Cmd
 
