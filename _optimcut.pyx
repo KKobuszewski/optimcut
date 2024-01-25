@@ -117,6 +117,9 @@ cdef class CutOptimizer:
     cdef public np.ndarray costfs
 
     def __cinit__(self, np.ndarray _state, np.ndarray _material_length): # cannot be overloaded
+        """
+        TODO: _material_length could be single float or array of floats
+        """
         self.n = <int> _state.size
 
         # memory allocation
@@ -178,6 +181,10 @@ cdef class CutOptimizer:
             
             return self.saves, self.costfs
     
+    def set_state(self,state):
+        if (state is not None) and (state.ndim == 1):
+            self.state[:] = state[:]
+
     # Available in Python-space:
     """
     @property

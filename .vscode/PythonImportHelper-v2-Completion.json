@@ -48,6 +48,22 @@
         "documentation": {}
     },
     {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "division",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -178,6 +194,24 @@
         "documentation": {}
     },
     {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.animation",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.animation",
+        "description": "matplotlib.animation",
+        "detail": "matplotlib.animation",
+        "documentation": {}
+    },
+    {
         "label": "material_length",
         "kind": 5,
         "importPath": "bigger_Example",
@@ -205,6 +239,33 @@
         "documentation": {}
     },
     {
+        "label": "material_length",
+        "kind": 5,
+        "importPath": "bigger_example",
+        "description": "bigger_example",
+        "peekOfCode": "material_length = np.zeros_like(state)+1000; material_length[0] = 1000;\n#_optimcut.initialize_qrng()\ncopt = _optimcut.CutOptimizer(state,material_length)\nprint(' material lengths: ',copt.material_length)\nprint(' initial state:    ',copt.state)\nsaves, costfs = copt.make_iterations(_state=state,py_niter=10000,py_temp=100,save_states=True)\nmaterial_ids[:] = _optimcut.material_ids_from_saves(saves, material_length)\n#_optimcut.finalize_qrng()",
+        "detail": "bigger_example",
+        "documentation": {}
+    },
+    {
+        "label": "copt",
+        "kind": 5,
+        "importPath": "bigger_example",
+        "description": "bigger_example",
+        "peekOfCode": "copt = _optimcut.CutOptimizer(state,material_length)\nprint(' material lengths: ',copt.material_length)\nprint(' initial state:    ',copt.state)\nsaves, costfs = copt.make_iterations(_state=state,py_niter=10000,py_temp=100,save_states=True)\nmaterial_ids[:] = _optimcut.material_ids_from_saves(saves, material_length)\n#_optimcut.finalize_qrng()",
+        "detail": "bigger_example",
+        "documentation": {}
+    },
+    {
+        "label": "material_ids[:]",
+        "kind": 5,
+        "importPath": "bigger_example",
+        "description": "bigger_example",
+        "peekOfCode": "material_ids[:] = _optimcut.material_ids_from_saves(saves, material_length)\n#_optimcut.finalize_qrng()",
+        "detail": "bigger_example",
+        "documentation": {}
+    },
+    {
         "label": "draw_",
         "kind": 2,
         "importPath": "optimcut",
@@ -218,7 +279,7 @@
         "kind": 2,
         "importPath": "optimcut",
         "description": "optimcut",
-        "peekOfCode": "def cuts_to_material(order, material_length):\n  material_id      = np.empty(order.size,dtype=np.int32)\n  current_length   = 0.0\n  current_material = 0\n  for it,slice in enumerate(order):\n    current_length += slice\n    if (current_length > material_length[current_material]):\n      current_length = slice\n      current_material += 1\n    material_id[it] = current_material",
+        "peekOfCode": "def cuts_to_material(order, material_length):\n  material_id      = np.empty(order.size,dtype=np.int32)\n  current_length   = 0.0\n  current_material = 0\n  for it,slice in enumerate(order):\n    current_length += slice\n    if (current_length > material_length[current_material]):\n      current_length    = slice\n      current_material += 1\n    material_id[it] = current_material",
         "detail": "optimcut",
         "documentation": {}
     },
@@ -346,6 +407,24 @@
         "description": "test_optimcut",
         "peekOfCode": "material_length = np.array([5.0,5.0,5.0,5.0,5.0], dtype=np.float64, order='C')\nleftovers       = np.array([0.0,0.0,0.0,0.0,0.0], dtype=np.float64, order='C')\n@pytest.mark.single_function\ndef test_swap_order():\n    x = state.copy()\n    _optimcut.swap_order(x,testing=True) # NOTE: for testing this function always uses \n                                         #       the beginig of quasirandom sequence\n    result = np.array([1.0, 5.0, 3.0, 4.0, 2.0], dtype=np.float64, order='C') # expected result\n    assert np.allclose(x,result)\n@pytest.mark.single_function",
         "detail": "test_optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "visualize_state",
+        "kind": 2,
+        "importPath": "visualization1",
+        "description": "visualization1",
+        "peekOfCode": "def visualize_state(state, material_id, material_length, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots()\n  if (max_bars is None):\n    ax.set_xlim([0, max( [material_length.size+1,5] )])\n  else:\n    ax.set_xlim([0, max_bars])\n  ax.set_xlabel(\"Material ID\")\n  ax.set_ylabel(\"Material length\")",
+        "detail": "visualization1",
+        "documentation": {}
+    },
+    {
+        "label": "visualize_state",
+        "kind": 2,
+        "importPath": "visualization2",
+        "description": "visualization2",
+        "peekOfCode": "def visualize_state(state, material_id, material_length, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots()\n  if (max_bars is None):\n    ax.set_xlim([0, max( [material_length.size+1,5] )])\n  else:\n    ax.set_xlim([0, max_bars])\n  ax.set_xlabel(\"Material ID\")\n  ax.set_ylabel(\"Length\")",
+        "detail": "visualization2",
         "documentation": {}
     }
 ]

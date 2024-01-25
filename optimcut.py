@@ -41,7 +41,7 @@ def cuts_to_material(order, material_length):
     current_length += slice
 
     if (current_length > material_length[current_material]):
-      current_length = slice
+      current_length    = slice
       current_material += 1
 
     material_id[it] = current_material
