@@ -9,7 +9,7 @@ Currently used, however may be not precise (gives 'locally' optimal solution and
 
 ## Advantages and drawbacks
 
-simpler algorithm -> less code storage requirements
+simpler algorithm -> less code storage requirements (could be the case while working with microcontrollers)
 
 better memory efficiency
 
