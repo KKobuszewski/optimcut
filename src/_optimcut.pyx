@@ -262,3 +262,4 @@ def visualize_algorithm(saves, material_ids, material_length,fps=30):
   #
   ani = matplotlib.animation.ArtistAnimation(fig, ims, interval=1000/fps, blit=True,repeat_delay=1000)
   return ani.to_html5_video()
+

@@ -118,6 +118,23 @@
         "documentation": {}
     },
     {
+        "label": "matplotlib.gridspec",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.gridspec",
+        "description": "matplotlib.gridspec",
+        "detail": "matplotlib.gridspec",
+        "documentation": {}
+    },
+    {
+        "label": "GridSpec",
+        "importPath": "matplotlib.gridspec",
+        "description": "matplotlib.gridspec",
+        "isExtraImport": true,
+        "detail": "matplotlib.gridspec",
+        "documentation": {}
+    },
+    {
         "label": "matplotlib",
         "kind": 6,
         "isExtraImport": true,
@@ -311,6 +328,42 @@
         "documentation": {}
     },
     {
+        "label": "gs",
+        "kind": 5,
+        "importPath": "matplotlib_gridspec",
+        "description": "matplotlib_gridspec",
+        "peekOfCode": "gs = GridSpec(2, 2, width_ratios=[1, 2], height_ratios=[4, 1])\n# Create the subplots\nax1 = plt.subplot(gs[0, 0])\nax2 = plt.subplot(gs[0, 1])\nax3 = plt.subplot(gs[1, :])\n# Plot some data on each subplot\nax1.plot([1, 2, 3], [4, 5, 6])\nax2.plot([1, 2, 3], [6, 5, 4])\nax3.plot([1, 2, 3], [5, 6, 4])\n# Show the plot",
+        "detail": "matplotlib_gridspec",
+        "documentation": {}
+    },
+    {
+        "label": "ax1",
+        "kind": 5,
+        "importPath": "matplotlib_gridspec",
+        "description": "matplotlib_gridspec",
+        "peekOfCode": "ax1 = plt.subplot(gs[0, 0])\nax2 = plt.subplot(gs[0, 1])\nax3 = plt.subplot(gs[1, :])\n# Plot some data on each subplot\nax1.plot([1, 2, 3], [4, 5, 6])\nax2.plot([1, 2, 3], [6, 5, 4])\nax3.plot([1, 2, 3], [5, 6, 4])\n# Show the plot\nplt.show()",
+        "detail": "matplotlib_gridspec",
+        "documentation": {}
+    },
+    {
+        "label": "ax2",
+        "kind": 5,
+        "importPath": "matplotlib_gridspec",
+        "description": "matplotlib_gridspec",
+        "peekOfCode": "ax2 = plt.subplot(gs[0, 1])\nax3 = plt.subplot(gs[1, :])\n# Plot some data on each subplot\nax1.plot([1, 2, 3], [4, 5, 6])\nax2.plot([1, 2, 3], [6, 5, 4])\nax3.plot([1, 2, 3], [5, 6, 4])\n# Show the plot\nplt.show()",
+        "detail": "matplotlib_gridspec",
+        "documentation": {}
+    },
+    {
+        "label": "ax3",
+        "kind": 5,
+        "importPath": "matplotlib_gridspec",
+        "description": "matplotlib_gridspec",
+        "peekOfCode": "ax3 = plt.subplot(gs[1, :])\n# Plot some data on each subplot\nax1.plot([1, 2, 3], [4, 5, 6])\nax2.plot([1, 2, 3], [6, 5, 4])\nax3.plot([1, 2, 3], [5, 6, 4])\n# Show the plot\nplt.show()",
+        "detail": "matplotlib_gridspec",
+        "documentation": {}
+    },
+    {
         "label": "draw_",
         "kind": 2,
         "importPath": "optimcut",
@@ -419,11 +472,29 @@
         "documentation": {}
     },
     {
+        "label": "GetState",
+        "kind": 2,
+        "importPath": "visualization1",
+        "description": "visualization1",
+        "peekOfCode": "def GetState(dtype=np.float64):\n    w = [2,3,4,5,6,7,8]\n    q = [4,2,6,6,2,2,2]\n    s = []\n    for j in range(len(w)):\n        for i in range(q[j]):\n            s.append(w[j])\n    return np.array(s, dtype=dtype, order='C')\ndef visualize_state(state, material_id, material_length, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified",
+        "detail": "visualization1",
+        "documentation": {}
+    },
+    {
         "label": "visualize_state",
         "kind": 2,
         "importPath": "visualization1",
         "description": "visualization1",
-        "peekOfCode": "def visualize_state(state, material_id, material_length, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots()\n  if (max_bars is None):\n    ax.set_xlim([0, max( [material_length.size+1,5] )])\n  else:\n    ax.set_xlim([0, max_bars])\n  ax.set_xlabel(\"Material ID\")\n  ax.set_ylabel(\"Material length\")",
+        "peekOfCode": "def visualize_state(state, material_id, material_length, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots(figsize=[15.,15.])\n  if (max_bars is None):\n    ax.set_xlim([0, max( [material_id.max()+3.5,5] )])\n  else:\n    ax.set_xlim([0, max_bars])\n  ax.set_xlabel(\"Material ID\")\n  ax.set_ylabel(\"Material length\")",
+        "detail": "visualization1",
+        "documentation": {}
+    },
+    {
+        "label": "plt.rcParams[\"font.size\"]",
+        "kind": 5,
+        "importPath": "visualization1",
+        "description": "visualization1",
+        "peekOfCode": "plt.rcParams[\"font.size\"] = 16\nimport sys\nsys.path.append('/content/drive/MyDrive/Optimcut/optimcut')\nimport _optimcut\ndef GetState(dtype=np.float64):\n    w = [2,3,4,5,6,7,8]\n    q = [4,2,6,6,2,2,2]\n    s = []\n    for j in range(len(w)):\n        for i in range(q[j]):",
         "detail": "visualization1",
         "documentation": {}
     },
@@ -434,6 +505,24 @@
         "description": "visualization2",
         "peekOfCode": "def visualize_state(state, material_id, material_length, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots()\n  if (max_bars is None):\n    ax.set_xlim([0, max( [material_length.size+1,5] )])\n  else:\n    ax.set_xlim([0, max_bars])\n  ax.set_xlabel(\"Material ID\")\n  ax.set_ylabel(\"Length\")",
         "detail": "visualization2",
+        "documentation": {}
+    },
+    {
+        "label": "GetState",
+        "kind": 2,
+        "importPath": "visualization3",
+        "description": "visualization3",
+        "peekOfCode": "def GetState(dtype=np.float64):\n    w = [2,3,4,5,6,7,8]\n    q = [4,2,6,6,2,2,2]\n    s=[]\n    for j in range(len(w)):\n        for i in range(q[j]):\n            s.append(w[j])\n    return np.array(s, dtype=dtype, order='C')\ndef visualize_state(state, material_id, material_length, costf=None, colors=None, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified",
+        "detail": "visualization3",
+        "documentation": {}
+    },
+    {
+        "label": "visualize_state",
+        "kind": 2,
+        "importPath": "visualization3",
+        "description": "visualization3",
+        "peekOfCode": "def visualize_state(state, material_id, material_length, costf=None, colors=None, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots(figsize=[25.0,5.0])\n  ax.set_xlabel(\"Length\")\n  ax.set_axis_off()\n  cmap = mpl.colormaps['hsv']\n  norm = mpl.colors.Normalize(vmin=0, vmax=int(material_length.max())+1)\n  # draw material (setup background)\n  l     = 0.0",
+        "detail": "visualization3",
         "documentation": {}
     }
 ]
