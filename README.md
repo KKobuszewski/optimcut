@@ -1,5 +1,5 @@
 # optimcut
-Simple library to optimize leftovers from cutting slices from longer material pieces (single dimension).
+Simple library to optimize leftovers from cutting slices from longer material pieces in one dimension - so called **Cutting Stock Problem**.
 
 <br>
 
@@ -9,7 +9,7 @@ Currently used, however may be not precise (gives 'locally' optimal solution and
 
 ## Advantages and drawbacks
 
-simpler algorithm -> less code storage requirements
+simpler algorithm -> less code storage requirements (could be the case while working with microcontrollers)
 
 better memory efficiency
 
@@ -35,13 +35,24 @@ $f_{i+1}$ - cost function value for configuration in the next step
 $T$       - parameter regulating acceptance probablity (usually called 'temperature')
 
 
-
+The form of acceptance means that in every case while new configuration is better than before swapping slices we accept new configuration ( $`f_{i+1} \leq f_i ~\implies~ P_{acc} \geq 1`$ ), however while new configuration is worse we accept it with some probability ( $`f_{i+1} > f_i ~\implies~ P_{acc} \in (0,1)`$ ).
 
 <br>
 
 
 
-# Cutting 
+# Classical solution to Cutting Stock Problem 
+
+Column generation method
+
+https://en.wikipedia.org/wiki/Cutting_stock_problem
+
+https://jump.dev/JuMP.jl/stable/tutorials/algorithms/cutting_stock_column_generation/
+
+<br>
+
+
+https://en.wikipedia.org/wiki/Column_generation
 
 https://youtu.be/O918V86Grhc?si=vMTUiuFVCakP0Cmd
 
