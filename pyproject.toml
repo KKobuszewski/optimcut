@@ -9,16 +9,35 @@ authors = [
   { name="Konrad Kobuszewski", email="konrad.kobuszewski93@gmail.com" },
 ]
 description = "Package for 1d cutting stock problem"
-readme = "README.md"
+readme = {file = "README.md", content-type = "text/markdown"}
 requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
 
+dependencies = [
+  "numpy >= 1.26.2, <1.26.3",
+  "cython >= 3.0.8, <3.0.9",
+  "tk >= 8.6.12, <8.6.13",
+]
+
 
 [project.urls]
-Homepage = "https://github.com/KKobuszewski/optimcut"
-Issues   = "https://github.com/KKobuszewski/optimcut"
+Homepage   = "https://github.com/KKobuszewski/optimcut"
+Repository = "https://github.com/KKobuszewski/optimcut.git"
+Issues     = "https://github.com/KKobuszewski/optimcut"
 
+
+# https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#writing-pyproject-toml
+
+[project.scripts]
+#optimcut-cli = "optimcut:???"
+
+[project.gui-scripts]
+#optimcut-gui = "optimcut:???"
+
+#[project.entry-points."optimcut.magical"]
+#optimcut = "optimcut:??"

@@ -2,8 +2,10 @@ import os
 import sys
 import numpy
 
-from distutils.core import setup
-from distutils.extension import Extension
+from setuptools import setup, find_packages
+from setuptools.extension import Extension
+#from distutils.core import setup
+#from distutils.extension import Extension
 from Cython.Distutils import build_ext
 
 # get the annotated file as well
@@ -17,6 +19,8 @@ usage: python setup.py build_ext --inplace
        python setup.py install --user
 """
 
+
+
 print('Compiling for')
 print(sys.version)
 print()
@@ -24,6 +28,10 @@ print()
 
 dpath = os.path.dirname( os.path.abspath(__file__) )
 print(dpath)
+
+
+# should be compiled with static libraries
+# gcc -Wl,-Bstatic -llib1 -llib2 file.c
 
 ext_modules = [
     Extension( '_optimcut',
@@ -36,22 +44,31 @@ ext_modules = [
                library_dirs        = ['/usr/local/lib'],
                define_macros       = [("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")] ),
 ]
+
+compiler_directives = 
+
 setup(
-    cmdclass = {'build_ext': build_ext},
+    name = 'optimcut',
+    #cmdclass = {'build_ext': build_ext},
+    zip_safe=False,            # Without these two options
+    include_package_data=True, # PyInstaller may not find your C-Extensions
+    packages = find_packages()
     ext_modules = cythonize( ext_modules, 
-                             compiler_directives = {'language_level' : str( sys.version_info.major )} )
+                             compiler_directives = {'language_level' : str( sys.version_info.major )} ),
 )
 
-import os
-import shutil
-import sys
+
+
+
+
+
 
 """
-srcfile = 'build/lib.linux-x86_64-2.7/_optimcut.so'
-dstfile = './_optimcut.so'
+https://stackoverflow.com/questions/22851552/can-i-create-a-static-cython-library-using-distutils
 
+https://stackoverflow.com/questions/47042483/how-to-build-and-distribute-a-python-cython-package-that-depends-on-third-party
+https://pypi.org/project/wheel/
 
-assert not os.path.isabs(srcfile)
-shutil.copy(srcfile, dstfile)
-shutil.rmtree('build')
 """
+
+

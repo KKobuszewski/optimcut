@@ -1,5 +1,40 @@
 [
     {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib",
+        "description": "matplotlib",
+        "detail": "matplotlib",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
         "label": "print_function",
         "importPath": "__future__",
         "description": "__future__",
@@ -73,15 +108,6 @@
         "documentation": {}
     },
     {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
@@ -100,21 +126,21 @@
         "documentation": {}
     },
     {
-        "label": "scipy.integrate",
+        "label": "subprocess",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "scipy.integrate",
-        "description": "scipy.integrate",
-        "detail": "scipy.integrate",
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
         "documentation": {}
     },
     {
-        "label": "matplotlib.pyplot",
+        "label": "matplotlib.animation",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "matplotlib.pyplot",
-        "description": "matplotlib.pyplot",
-        "detail": "matplotlib.pyplot",
+        "importPath": "matplotlib.animation",
+        "description": "matplotlib.animation",
+        "detail": "matplotlib.animation",
         "documentation": {}
     },
     {
@@ -135,36 +161,62 @@
         "documentation": {}
     },
     {
-        "label": "matplotlib",
+        "label": "scipy.integrate",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "matplotlib",
-        "description": "matplotlib",
-        "detail": "matplotlib",
+        "importPath": "scipy.integrate",
+        "description": "scipy.integrate",
+        "detail": "scipy.integrate",
         "documentation": {}
     },
     {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
+        "label": "os",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "tqdm",
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "tkinter",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "filedialog",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
         "documentation": {}
     },
     {
         "label": "setup",
-        "importPath": "distutils.core",
-        "description": "distutils.core",
+        "importPath": "setuptools",
+        "description": "setuptools",
         "isExtraImport": true,
-        "detail": "distutils.core",
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "find_packages",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
         "documentation": {}
     },
     {
         "label": "Extension",
-        "importPath": "distutils.extension",
-        "description": "distutils.extension",
+        "importPath": "setuptools.extension",
+        "description": "setuptools.extension",
         "isExtraImport": true,
-        "detail": "distutils.extension",
+        "detail": "setuptools.extension",
         "documentation": {}
     },
     {
@@ -193,39 +245,129 @@
         "documentation": {}
     },
     {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
+        "label": "BinPackingExample",
+        "kind": 2,
+        "importPath": "Column-Generation.column_generation",
+        "description": "Column-Generation.column_generation",
+        "peekOfCode": "def BinPackingExample():\n    B = 9\n    w = [2,3,4,5,6,7,8]\n    q = [4,2,6,6,2,2,2]\n    s=[]\n    for j in range(len(w)):\n        for i in range(q[j]):\n            s.append(w[j])\n    return np.array(s),B\ndef FFD(s, B):",
+        "detail": "Column-Generation.column_generation",
         "documentation": {}
     },
     {
-        "label": "shutil",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "shutil",
-        "description": "shutil",
-        "detail": "shutil",
+        "label": "FFD",
+        "kind": 2,
+        "importPath": "Column-Generation.column_generation",
+        "description": "Column-Generation.column_generation",
+        "peekOfCode": "def FFD(s, B):\n    remain = [B]\n    sol = [[]]\n    for item in sorted(s, reverse=True):\n        for j,free in enumerate(remain):\n            if free >= item:\n                remain[j] -= item\n                sol[j].append(item)\n                break\n        else:",
+        "detail": "Column-Generation.column_generation",
         "documentation": {}
     },
     {
-        "label": "subprocess",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "subprocess",
-        "description": "subprocess",
-        "detail": "subprocess",
+        "label": "plot_from_matrix",
+        "kind": 2,
+        "importPath": "Column-Generation.column_generation",
+        "description": "Column-Generation.column_generation",
+        "peekOfCode": "def plot_from_matrix(A, possible_lengths, fig=None, ax=None, max_width=None):\n  if fig is None:\n    fig, ax = plt.subplots()\n  if max_width is not None:\n    ax.set_xlim([-0.05*max_width,max_width*1.1])\n  ax.set_ylim([-1.,A.shape[1]+1])\n  for i,column in enumerate(A.T):\n    #print(column)\n    left = 0.01\n    ss = ''",
+        "detail": "Column-Generation.column_generation",
         "documentation": {}
     },
     {
-        "label": "matplotlib.animation",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "matplotlib.animation",
-        "description": "matplotlib.animation",
-        "detail": "matplotlib.animation",
+        "label": "s,material",
+        "kind": 5,
+        "importPath": "Column-Generation.column_generation",
+        "description": "Column-Generation.column_generation",
+        "peekOfCode": "s,material = BinPackingExample()\npossible_lengths = np.unique(s)\nnumber_of_elems  = np.empty_like(possible_lengths)\nA = np.zeros([possible_lengths.size,\n              possible_lengths.size], dtype=np.int64)\nfor i in range(possible_lengths.size):\n  number_of_elems[i] = get_nelems(s,possible_lengths[i])\n  A[i,i] = int(B/possible_lengths[i])\nprint('List of elements to be cut:',s)\nprint()",
+        "detail": "Column-Generation.column_generation",
+        "documentation": {}
+    },
+    {
+        "label": "possible_lengths",
+        "kind": 5,
+        "importPath": "Column-Generation.column_generation",
+        "description": "Column-Generation.column_generation",
+        "peekOfCode": "possible_lengths = np.unique(s)\nnumber_of_elems  = np.empty_like(possible_lengths)\nA = np.zeros([possible_lengths.size,\n              possible_lengths.size], dtype=np.int64)\nfor i in range(possible_lengths.size):\n  number_of_elems[i] = get_nelems(s,possible_lengths[i])\n  A[i,i] = int(B/possible_lengths[i])\nprint('List of elements to be cut:',s)\nprint()\nprint('To satisfy demand we need:')",
+        "detail": "Column-Generation.column_generation",
+        "documentation": {}
+    },
+    {
+        "label": "A",
+        "kind": 5,
+        "importPath": "Column-Generation.column_generation",
+        "description": "Column-Generation.column_generation",
+        "peekOfCode": "A = np.zeros([possible_lengths.size,\n              possible_lengths.size], dtype=np.int64)\nfor i in range(possible_lengths.size):\n  number_of_elems[i] = get_nelems(s,possible_lengths[i])\n  A[i,i] = int(B/possible_lengths[i])\nprint('List of elements to be cut:',s)\nprint()\nprint('To satisfy demand we need:')\nfor i in range(possible_lengths.size):\n  print( number_of_elems[i], 'of pattern', get_pattern(A[:,i],possible_lengths) )",
+        "detail": "Column-Generation.column_generation",
+        "documentation": {}
+    },
+    {
+        "label": "B",
+        "kind": 5,
+        "importPath": "Column-Generation.column_generation",
+        "description": "Column-Generation.column_generation",
+        "peekOfCode": "B = np.hstack( (A, np.array([[0],[0],[1],[1],[0],[0],[0]])) )\nprint(B)\nfig, ax = plt.subplots()\nplot_from_matrix(B, possible_lengths, fig=fig, ax=ax, max_width=9.0)\nplt.show()\nplt.close('all')",
+        "detail": "Column-Generation.column_generation",
+        "documentation": {}
+    },
+    {
+        "label": "draw_",
+        "kind": 2,
+        "importPath": "python.optimcut_python",
+        "description": "python.optimcut_python",
+        "peekOfCode": "def draw_(order, material_id, material_length):\n  fig, ax = plt.subplots()\n  ax.set_xlim([0, max( [material_id.max()+2,5] )])\n  _,occ = np. unique(material_id, return_counts=True)\n  #cmap = cm.get_cmap('viridis', int(material_length.max())+1)\n  cmap = mpl.colormaps['viridis']\n  norm = mpl.colors.Normalize(vmin=0, vmax=int(material_length.max())+1)\n  for uid in np.unique(material_id):\n    bottom=0\n    order_id = order[material_id==uid]",
+        "detail": "python.optimcut_python",
+        "documentation": {}
+    },
+    {
+        "label": "cuts_to_material",
+        "kind": 2,
+        "importPath": "python.optimcut_python",
+        "description": "python.optimcut_python",
+        "peekOfCode": "def cuts_to_material(order, material_length):\n  material_id      = np.empty(order.size,dtype=np.int32)\n  current_length   = 0.0\n  current_material = 0\n  for it,slice in enumerate(order):\n    current_length += slice\n    if (current_length > material_length[current_material]):\n      current_length    = slice\n      current_material += 1\n    material_id[it] = current_material",
+        "detail": "python.optimcut_python",
+        "documentation": {}
+    },
+    {
+        "label": "material_leftovers",
+        "kind": 2,
+        "importPath": "python.optimcut_python",
+        "description": "python.optimcut_python",
+        "peekOfCode": "def material_leftovers(order, material_id, material_length):\n  leftovers = np.zeros( np.max(material_id)+1 )\n  for material in np.unique(material_id):\n    leftovers[material] = material_length[material] -              \\\n                          np.sum( order[material_id == material] )\n  return leftovers\ndef swap_order(order):\n  n = order.size\n  i = np.random.randint(n)\n  j = np.random.randint(n)",
+        "detail": "python.optimcut_python",
+        "documentation": {}
+    },
+    {
+        "label": "swap_order",
+        "kind": 2,
+        "importPath": "python.optimcut_python",
+        "description": "python.optimcut_python",
+        "peekOfCode": "def swap_order(order):\n  n = order.size\n  i = np.random.randint(n)\n  j = np.random.randint(n)\n  while ((i == j) or (order[i] == order[j])):\n    j = np.random.randint(n)\n  new_order = np.copy(order)\n  new_order[i]  = order[j]\n  new_order[j]  = order[i]\n  return new_order",
+        "detail": "python.optimcut_python",
+        "documentation": {}
+    },
+    {
+        "label": "cost_function",
+        "kind": 2,
+        "importPath": "python.optimcut_python",
+        "description": "python.optimcut_python",
+        "peekOfCode": "def cost_function(order,material_id, material_length):\n  leftovers = material_leftovers(order, material_id, material_length)\n  #n_materials = material_id.max()\n  return leftovers.sum() #+ leftovers.mean()*n_materials\ndef acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=1.0):\n  return np.exp( (cost_function(order,     material_id,     material_length) - \\\n                  cost_function(new_order, new_material_id, material_length)) / temp )\ndef step(order, material_id, material_length, temp=1.0, verbose=0):\n  #new_order = order.copy()\n  ap = 0.0",
+        "detail": "python.optimcut_python",
+        "documentation": {}
+    },
+    {
+        "label": "acceptance_probability",
+        "kind": 2,
+        "importPath": "python.optimcut_python",
+        "description": "python.optimcut_python",
+        "peekOfCode": "def acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=1.0):\n  return np.exp( (cost_function(order,     material_id,     material_length) - \\\n                  cost_function(new_order, new_material_id, material_length)) / temp )\ndef step(order, material_id, material_length, temp=1.0, verbose=0):\n  #new_order = order.copy()\n  ap = 0.0\n  while( (ap == 0.0) or (ap < np.random.rand()) ):\n    new_order       = swap_order(order)\n    new_material_id = cuts_to_material(new_order, material_length)\n    ap = acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=temp)",
+        "detail": "python.optimcut_python",
+        "documentation": {}
+    },
+    {
+        "label": "step",
+        "kind": 2,
+        "importPath": "python.optimcut_python",
+        "description": "python.optimcut_python",
+        "peekOfCode": "def step(order, material_id, material_length, temp=1.0, verbose=0):\n  #new_order = order.copy()\n  ap = 0.0\n  while( (ap == 0.0) or (ap < np.random.rand()) ):\n    new_order       = swap_order(order)\n    new_material_id = cuts_to_material(new_order, material_length)\n    ap = acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=temp)\n  if (verbose > 0):\n    print(new_order, new_material_id,\n          cost_function(new_order, new_material_id, material_length))",
+        "detail": "python.optimcut_python",
         "documentation": {}
     },
     {
@@ -274,6 +416,69 @@
         "documentation": {}
     },
     {
+        "label": "visualize_state",
+        "kind": 2,
+        "importPath": "visualizations.visualization0",
+        "description": "visualizations.visualization0",
+        "peekOfCode": "def visualize_state(state, material_id, material_length, costf=None, colors=None, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots(figsize=[25.0,5.0])\n  ax.set_xlabel(\"Length\")\n  ax.set_axis_off()\n  cmap = mpl.colormaps['hsv']\n  norm = mpl.colors.Normalize(vmin=0, vmax=int(material_length.max())+1)\n  # draw material (setup background)\n  l     = 0.0",
+        "detail": "visualizations.visualization0",
+        "documentation": {}
+    },
+    {
+        "label": "GetState",
+        "kind": 2,
+        "importPath": "visualizations.visualization1",
+        "description": "visualizations.visualization1",
+        "peekOfCode": "def GetState(dtype=np.float64):\n    w = [2,3,4,5,6,7,8]\n    q = [4,2,6,6,2,2,2]\n    s = []\n    for j in range(len(w)):\n        for i in range(q[j]):\n            s.append(w[j])\n    return np.array(s, dtype=dtype, order='C')\ndef visualize_state(state, material_id, material_length, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified",
+        "detail": "visualizations.visualization1",
+        "documentation": {}
+    },
+    {
+        "label": "visualize_state",
+        "kind": 2,
+        "importPath": "visualizations.visualization1",
+        "description": "visualizations.visualization1",
+        "peekOfCode": "def visualize_state(state, material_id, material_length, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots(figsize=[15.,15.])\n  if (max_bars is None):\n    ax.set_xlim([0, max( [material_id.max()+3.5,5] )])\n  else:\n    ax.set_xlim([0, max_bars])\n  ax.set_xlabel(\"Material ID\")\n  ax.set_ylabel(\"Material length\")",
+        "detail": "visualizations.visualization1",
+        "documentation": {}
+    },
+    {
+        "label": "plt.rcParams[\"font.size\"]",
+        "kind": 5,
+        "importPath": "visualizations.visualization1",
+        "description": "visualizations.visualization1",
+        "peekOfCode": "plt.rcParams[\"font.size\"] = 16\nimport sys\nsys.path.append('/content/drive/MyDrive/Optimcut/optimcut')\nimport _optimcut\ndef GetState(dtype=np.float64):\n    w = [2,3,4,5,6,7,8]\n    q = [4,2,6,6,2,2,2]\n    s = []\n    for j in range(len(w)):\n        for i in range(q[j]):",
+        "detail": "visualizations.visualization1",
+        "documentation": {}
+    },
+    {
+        "label": "visualize_state",
+        "kind": 2,
+        "importPath": "visualizations.visualization2",
+        "description": "visualizations.visualization2",
+        "peekOfCode": "def visualize_state(state, material_id, material_length, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots()\n  if (max_bars is None):\n    ax.set_xlim([0, max( [material_length.size+1,5] )])\n  else:\n    ax.set_xlim([0, max_bars])\n  ax.set_xlabel(\"Material ID\")\n  ax.set_ylabel(\"Length\")",
+        "detail": "visualizations.visualization2",
+        "documentation": {}
+    },
+    {
+        "label": "GetState",
+        "kind": 2,
+        "importPath": "visualizations.visualization3",
+        "description": "visualizations.visualization3",
+        "peekOfCode": "def GetState(dtype=np.float64):\n    w = [2,3,4,5,6,7,8]\n    q = [4,2,6,6,2,2,2]\n    s=[]\n    for j in range(len(w)):\n        for i in range(q[j]):\n            s.append(w[j])\n    return np.array(s, dtype=dtype, order='C')\ndef visualize_state(state, material_id, material_length, costf=None, colors=None, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified",
+        "detail": "visualizations.visualization3",
+        "documentation": {}
+    },
+    {
+        "label": "visualize_state",
+        "kind": 2,
+        "importPath": "visualizations.visualization3",
+        "description": "visualizations.visualization3",
+        "peekOfCode": "def visualize_state(state, material_id, material_length, costf=None, colors=None, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots(figsize=[25.0,5.0])\n  ax.set_xlabel(\"Length\")\n  ax.set_axis_off()\n  cmap = mpl.colormaps['hsv']\n  norm = mpl.colors.Normalize(vmin=0, vmax=int(material_length.max())+1)\n  # draw material (setup background)\n  l     = 0.0",
+        "detail": "visualizations.visualization3",
+        "documentation": {}
+    },
+    {
         "label": "material_length",
         "kind": 5,
         "importPath": "bigger_Example",
@@ -325,6 +530,15 @@
         "description": "bigger_example",
         "peekOfCode": "material_ids[:] = _optimcut.material_ids_from_saves(saves, material_length)\n#_optimcut.finalize_qrng()",
         "detail": "bigger_example",
+        "documentation": {}
+    },
+    {
+        "label": "dpath",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "dpath = os.path.dirname( os.path.abspath(__file__) )\nprint(dpath)\nsys.path.append(dpath)\nif __name__ == '__main__':\n    root = tk.Tk()\n    root.withdraw()\n    # get file path\n    file_path = filedialog.askopenfilename()\n    # open file (only csv)\n    print('Opening file', file_path)",
+        "detail": "main",
         "documentation": {}
     },
     {
@@ -364,74 +578,20 @@
         "documentation": {}
     },
     {
-        "label": "draw_",
-        "kind": 2,
-        "importPath": "optimcut",
-        "description": "optimcut",
-        "peekOfCode": "def draw_(order, material_id, material_length):\n  fig, ax = plt.subplots()\n  ax.set_xlim([0, max( [material_id.max()+2,5] )])\n  _,occ = np. unique(material_id, return_counts=True)\n  #cmap = cm.get_cmap('viridis', int(material_length.max())+1)\n  cmap = mpl.colormaps['viridis']\n  norm = mpl.colors.Normalize(vmin=0, vmax=int(material_length.max())+1)\n  for uid in np.unique(material_id):\n    bottom=0\n    order_id = order[material_id==uid]",
-        "detail": "optimcut",
-        "documentation": {}
-    },
-    {
-        "label": "cuts_to_material",
-        "kind": 2,
-        "importPath": "optimcut",
-        "description": "optimcut",
-        "peekOfCode": "def cuts_to_material(order, material_length):\n  material_id      = np.empty(order.size,dtype=np.int32)\n  current_length   = 0.0\n  current_material = 0\n  for it,slice in enumerate(order):\n    current_length += slice\n    if (current_length > material_length[current_material]):\n      current_length    = slice\n      current_material += 1\n    material_id[it] = current_material",
-        "detail": "optimcut",
-        "documentation": {}
-    },
-    {
-        "label": "material_leftovers",
-        "kind": 2,
-        "importPath": "optimcut",
-        "description": "optimcut",
-        "peekOfCode": "def material_leftovers(order, material_id, material_length):\n  leftovers = np.zeros( np.max(material_id)+1 )\n  for material in np.unique(material_id):\n    leftovers[material] = material_length[material] -              \\\n                          np.sum( order[material_id == material] )\n  return leftovers\ndef swap_order(order):\n  n = order.size\n  i = np.random.randint(n)\n  j = np.random.randint(n)",
-        "detail": "optimcut",
-        "documentation": {}
-    },
-    {
-        "label": "swap_order",
-        "kind": 2,
-        "importPath": "optimcut",
-        "description": "optimcut",
-        "peekOfCode": "def swap_order(order):\n  n = order.size\n  i = np.random.randint(n)\n  j = np.random.randint(n)\n  while ((i == j) or (order[i] == order[j])):\n    j = np.random.randint(n)\n  new_order = np.copy(order)\n  new_order[i]  = order[j]\n  new_order[j]  = order[i]\n  return new_order",
-        "detail": "optimcut",
-        "documentation": {}
-    },
-    {
-        "label": "cost_function",
-        "kind": 2,
-        "importPath": "optimcut",
-        "description": "optimcut",
-        "peekOfCode": "def cost_function(order,material_id, material_length):\n  leftovers = material_leftovers(order, material_id, material_length)\n  #n_materials = material_id.max()\n  return leftovers.sum() #+ leftovers.mean()*n_materials\ndef acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=1.0):\n  return np.exp( (cost_function(order,     material_id,     material_length) - \\\n                  cost_function(new_order, new_material_id, material_length)) / temp )\ndef step(order, material_id, material_length, temp=1.0, verbose=0):\n  #new_order = order.copy()\n  ap = 0.0",
-        "detail": "optimcut",
-        "documentation": {}
-    },
-    {
-        "label": "acceptance_probability",
-        "kind": 2,
-        "importPath": "optimcut",
-        "description": "optimcut",
-        "peekOfCode": "def acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=1.0):\n  return np.exp( (cost_function(order,     material_id,     material_length) - \\\n                  cost_function(new_order, new_material_id, material_length)) / temp )\ndef step(order, material_id, material_length, temp=1.0, verbose=0):\n  #new_order = order.copy()\n  ap = 0.0\n  while( (ap == 0.0) or (ap < np.random.rand()) ):\n    new_order       = swap_order(order)\n    new_material_id = cuts_to_material(new_order, material_length)\n    ap = acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=temp)",
-        "detail": "optimcut",
-        "documentation": {}
-    },
-    {
-        "label": "step",
-        "kind": 2,
-        "importPath": "optimcut",
-        "description": "optimcut",
-        "peekOfCode": "def step(order, material_id, material_length, temp=1.0, verbose=0):\n  #new_order = order.copy()\n  ap = 0.0\n  while( (ap == 0.0) or (ap < np.random.rand()) ):\n    new_order       = swap_order(order)\n    new_material_id = cuts_to_material(new_order, material_length)\n    ap = acceptance_probability(order,material_id, new_order,new_material_id, material_length, temp=temp)\n  if (verbose > 0):\n    print(new_order, new_material_id,\n          cost_function(new_order, new_material_id, material_length))",
-        "detail": "optimcut",
-        "documentation": {}
-    },
-    {
         "label": "Cython.Compiler.Options.annotate",
         "kind": 5,
         "importPath": "setup",
         "description": "setup",
-        "peekOfCode": "Cython.Compiler.Options.annotate = True\nfrom Cython.Build import cythonize\n\"\"\"\nusage: python setup.py build_ext --inplace\n       python setup.py install --user\n\"\"\"\nprint('Compiling for')\nprint(sys.version)\nprint()\next_modules = [",
+        "peekOfCode": "Cython.Compiler.Options.annotate = True\nfrom Cython.Build import cythonize\n\"\"\"\nusage: python setup.py build_ext --inplace\n       python setup.py install --user\n\"\"\"\nprint('Compiling for')\nprint(sys.version)\nprint()\ndpath = os.path.dirname( os.path.abspath(__file__) )",
+        "detail": "setup",
+        "documentation": {}
+    },
+    {
+        "label": "dpath",
+        "kind": 5,
+        "importPath": "setup",
+        "description": "setup",
+        "peekOfCode": "dpath = os.path.dirname( os.path.abspath(__file__) )\nprint(dpath)\n# should be compiled with static libraries\n# gcc -Wl,-Bstatic -llib1 -llib2 file.c\next_modules = [\n    Extension( '_optimcut',\n               sources             = [dpath + '/src/optimcut/_optimcut.pyx'],\n               language            = 'c++',\n               include_dirs        = [numpy.get_include(),'.'],\n               extra_compile_args  = ['-std=c++11','-fopenmp','-pthread','-fPIC','-mtune=native','-march=native','-O3'],",
         "detail": "setup",
         "documentation": {}
     },
@@ -440,89 +600,17 @@
         "kind": 5,
         "importPath": "setup",
         "description": "setup",
-        "peekOfCode": "ext_modules = [\n    Extension( '_optimcut',\n               sources             = ['_optimcut.pyx'],\n               language            = 'c++',\n               include_dirs        = [numpy.get_include(),'.'],\n               extra_compile_args  = ['-std=c++11','-fopenmp','-pthread','-fPIC','-mtune=native','-march=native','-O3'],\n               extra_link_args     = ['-fopenmp','-pthread'],\n               libraries           = ['gsl','gslcblas','gomp','m'],\n               library_dirs        = ['/usr/local/lib'],\n               define_macros       = [(\"NPY_NO_DEPRECATED_API\", \"NPY_1_7_API_VERSION\")] ),",
+        "peekOfCode": "ext_modules = [\n    Extension( '_optimcut',\n               sources             = [dpath + '/src/optimcut/_optimcut.pyx'],\n               language            = 'c++',\n               include_dirs        = [numpy.get_include(),'.'],\n               extra_compile_args  = ['-std=c++11','-fopenmp','-pthread','-fPIC','-mtune=native','-march=native','-O3'],\n               extra_link_args     = ['-fopenmp','-pthread'],\n               libraries           = ['gsl','gslcblas','gomp','m'],\n               library_dirs        = ['/usr/local/lib'],\n               define_macros       = [(\"NPY_NO_DEPRECATED_API\", \"NPY_1_7_API_VERSION\")] ),",
         "detail": "setup",
         "documentation": {}
     },
     {
-        "label": "srcfile",
+        "label": "compiler_directives",
         "kind": 5,
         "importPath": "setup",
         "description": "setup",
-        "peekOfCode": "srcfile = 'build/lib.linux-x86_64-2.7/_optimcut.so'\ndstfile = './_optimcut.so'\nassert not os.path.isabs(srcfile)\nshutil.copy(srcfile, dstfile)\nshutil.rmtree('build')\n\"\"\"",
+        "peekOfCode": "compiler_directives = \nsetup(\n    name = 'optimcut',\n    #cmdclass = {'build_ext': build_ext},\n    zip_safe=False,            # Without these two options\n    include_package_data=True, # PyInstaller may not find your C-Extensions\n    packages = find_packages()\n    ext_modules = cythonize( ext_modules, \n                             compiler_directives = {'language_level' : str( sys.version_info.major )} ),\n)",
         "detail": "setup",
-        "documentation": {}
-    },
-    {
-        "label": "dstfile",
-        "kind": 5,
-        "importPath": "setup",
-        "description": "setup",
-        "peekOfCode": "dstfile = './_optimcut.so'\nassert not os.path.isabs(srcfile)\nshutil.copy(srcfile, dstfile)\nshutil.rmtree('build')\n\"\"\"",
-        "detail": "setup",
-        "documentation": {}
-    },
-    {
-        "label": "visualize_state",
-        "kind": 2,
-        "importPath": "visualization0",
-        "description": "visualization0",
-        "peekOfCode": "def visualize_state(state, material_id, material_length, costf=None, colors=None, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots(figsize=[25.0,5.0])\n  ax.set_xlabel(\"Length\")\n  ax.set_axis_off()\n  cmap = mpl.colormaps['hsv']\n  norm = mpl.colors.Normalize(vmin=0, vmax=int(material_length.max())+1)\n  # draw material (setup background)\n  l     = 0.0",
-        "detail": "visualization0",
-        "documentation": {}
-    },
-    {
-        "label": "GetState",
-        "kind": 2,
-        "importPath": "visualization1",
-        "description": "visualization1",
-        "peekOfCode": "def GetState(dtype=np.float64):\n    w = [2,3,4,5,6,7,8]\n    q = [4,2,6,6,2,2,2]\n    s = []\n    for j in range(len(w)):\n        for i in range(q[j]):\n            s.append(w[j])\n    return np.array(s, dtype=dtype, order='C')\ndef visualize_state(state, material_id, material_length, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified",
-        "detail": "visualization1",
-        "documentation": {}
-    },
-    {
-        "label": "visualize_state",
-        "kind": 2,
-        "importPath": "visualization1",
-        "description": "visualization1",
-        "peekOfCode": "def visualize_state(state, material_id, material_length, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots(figsize=[15.,15.])\n  if (max_bars is None):\n    ax.set_xlim([0, max( [material_id.max()+3.5,5] )])\n  else:\n    ax.set_xlim([0, max_bars])\n  ax.set_xlabel(\"Material ID\")\n  ax.set_ylabel(\"Material length\")",
-        "detail": "visualization1",
-        "documentation": {}
-    },
-    {
-        "label": "plt.rcParams[\"font.size\"]",
-        "kind": 5,
-        "importPath": "visualization1",
-        "description": "visualization1",
-        "peekOfCode": "plt.rcParams[\"font.size\"] = 16\nimport sys\nsys.path.append('/content/drive/MyDrive/Optimcut/optimcut')\nimport _optimcut\ndef GetState(dtype=np.float64):\n    w = [2,3,4,5,6,7,8]\n    q = [4,2,6,6,2,2,2]\n    s = []\n    for j in range(len(w)):\n        for i in range(q[j]):",
-        "detail": "visualization1",
-        "documentation": {}
-    },
-    {
-        "label": "visualize_state",
-        "kind": 2,
-        "importPath": "visualization2",
-        "description": "visualization2",
-        "peekOfCode": "def visualize_state(state, material_id, material_length, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots()\n  if (max_bars is None):\n    ax.set_xlim([0, max( [material_length.size+1,5] )])\n  else:\n    ax.set_xlim([0, max_bars])\n  ax.set_xlabel(\"Material ID\")\n  ax.set_ylabel(\"Length\")",
-        "detail": "visualization2",
-        "documentation": {}
-    },
-    {
-        "label": "GetState",
-        "kind": 2,
-        "importPath": "visualization3",
-        "description": "visualization3",
-        "peekOfCode": "def GetState(dtype=np.float64):\n    w = [2,3,4,5,6,7,8]\n    q = [4,2,6,6,2,2,2]\n    s=[]\n    for j in range(len(w)):\n        for i in range(q[j]):\n            s.append(w[j])\n    return np.array(s, dtype=dtype, order='C')\ndef visualize_state(state, material_id, material_length, costf=None, colors=None, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified",
-        "detail": "visualization3",
-        "documentation": {}
-    },
-    {
-        "label": "visualize_state",
-        "kind": 2,
-        "importPath": "visualization3",
-        "description": "visualization3",
-        "peekOfCode": "def visualize_state(state, material_id, material_length, costf=None, colors=None, max_bars=None, fig=None, ax=None):\n  # prepare figure (while not specified\n  if (fig is None) or (ax is None):\n    fig, ax = plt.subplots(figsize=[25.0,5.0])\n  ax.set_xlabel(\"Length\")\n  ax.set_axis_off()\n  cmap = mpl.colormaps['hsv']\n  norm = mpl.colors.Normalize(vmin=0, vmax=int(material_length.max())+1)\n  # draw material (setup background)\n  l     = 0.0",
-        "detail": "visualization3",
         "documentation": {}
     }
 ]
