@@ -1,3 +1,4 @@
+import os
 import sys
 import numpy
 
@@ -20,9 +21,13 @@ print('Compiling for')
 print(sys.version)
 print()
 
+
+dpath = os.path.dirname( os.path.abspath(__file__) )
+print(dpath)
+
 ext_modules = [
     Extension( '_optimcut',
-               sources             = ['_optimcut.pyx'],
+               sources             = [dpath + '/src/optimcut/_optimcut.pyx'],
                language            = 'c++',
                include_dirs        = [numpy.get_include(),'.'],
                extra_compile_args  = ['-std=c++11','-fopenmp','-pthread','-fPIC','-mtune=native','-march=native','-O3'],
