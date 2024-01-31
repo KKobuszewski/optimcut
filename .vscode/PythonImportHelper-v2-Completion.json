@@ -196,6 +196,62 @@
         "documentation": {}
     },
     {
+        "label": "QtWidgets",
+        "importPath": "PyQt5",
+        "description": "PyQt5",
+        "isExtraImport": true,
+        "detail": "PyQt5",
+        "documentation": {}
+    },
+    {
+        "label": "QtCore",
+        "importPath": "PyQt5",
+        "description": "PyQt5",
+        "isExtraImport": true,
+        "detail": "PyQt5",
+        "documentation": {}
+    },
+    {
+        "label": "QWidget",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QApplication",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QMainWindow",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QPushButton",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QFileDialog",
+        "importPath": "PyQt5.QtWidgets",
+        "description": "PyQt5.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
         "label": "setup",
         "importPath": "setuptools",
         "description": "setuptools",
@@ -578,6 +634,24 @@
         "documentation": {}
     },
     {
+        "label": "app",
+        "kind": 5,
+        "importPath": "qt_file_dialog",
+        "description": "qt_file_dialog",
+        "peekOfCode": "app = QApplication(sys.argv)\nMainWindow = QtWidgets.QMainWindow()\nfileName, _ = QtWidgets.QFileDialog.getOpenFileName(MainWindow, 'Open File', ' ', 'All Files (*);;Text Files (*.txt)')\nif fileName:\n    print(fileName)\n# here do some stuff\n# showing of the main window should occur after finishing the calculations\nMainWindow.show()\nsys.exit(app.exec_())",
+        "detail": "qt_file_dialog",
+        "documentation": {}
+    },
+    {
+        "label": "MainWindow",
+        "kind": 5,
+        "importPath": "qt_file_dialog",
+        "description": "qt_file_dialog",
+        "peekOfCode": "MainWindow = QtWidgets.QMainWindow()\nfileName, _ = QtWidgets.QFileDialog.getOpenFileName(MainWindow, 'Open File', ' ', 'All Files (*);;Text Files (*.txt)')\nif fileName:\n    print(fileName)\n# here do some stuff\n# showing of the main window should occur after finishing the calculations\nMainWindow.show()\nsys.exit(app.exec_())",
+        "detail": "qt_file_dialog",
+        "documentation": {}
+    },
+    {
         "label": "Cython.Compiler.Options.annotate",
         "kind": 5,
         "importPath": "setup",
@@ -605,11 +679,11 @@
         "documentation": {}
     },
     {
-        "label": "compiler_directives",
+        "label": "cython_directives",
         "kind": 5,
         "importPath": "setup",
         "description": "setup",
-        "peekOfCode": "compiler_directives = \nsetup(\n    name = 'optimcut',\n    #cmdclass = {'build_ext': build_ext},\n    zip_safe=False,            # Without these two options\n    include_package_data=True, # PyInstaller may not find your C-Extensions\n    packages = find_packages()\n    ext_modules = cythonize( ext_modules, \n                             compiler_directives = {'language_level' : str( sys.version_info.major )} ),\n)",
+        "peekOfCode": "cython_directives = {\n    'embedsignature' : True,\n    'language_level' : str( sys.version_info.major )\n}\nsetup(\n    name = 'optimcut',\n    #cmdclass = {'build_ext': build_ext},\n    zip_safe=False,            # Without these two options\n    include_package_data=True, # PyInstaller may not find your C-Extensions\n    packages = find_packages(),",
         "detail": "setup",
         "documentation": {}
     }

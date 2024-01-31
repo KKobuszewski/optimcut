@@ -19,11 +19,11 @@ classifiers = [
 ]
 
 dependencies = [
-  "numpy >= 1.26.2, <1.26.3",
-  "cython >= 3.0.8, <3.0.9",
-  "tk >= 8.6.12, <8.6.13",
+  "numpy == 1.26.2",
+  "cython == 3.0.8",
+  "PyQt5 == 5.15.10",
 ]
-
+# "Tkinter == 8.6.12",
 
 [project.urls]
 Homepage   = "https://github.com/KKobuszewski/optimcut"

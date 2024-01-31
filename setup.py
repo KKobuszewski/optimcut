@@ -45,16 +45,20 @@ ext_modules = [
                define_macros       = [("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")] ),
 ]
 
-compiler_directives = 
+cython_directives = {
+    'embedsignature' : True,
+    'language_level' : str( sys.version_info.major )
+}
 
 setup(
     name = 'optimcut',
     #cmdclass = {'build_ext': build_ext},
     zip_safe=False,            # Without these two options
     include_package_data=True, # PyInstaller may not find your C-Extensions
-    packages = find_packages()
+    packages = find_packages(),
+    install_requires=[], # add any additional packages that needs to be installed along with your package.
     ext_modules = cythonize( ext_modules, 
-                             compiler_directives = {'language_level' : str( sys.version_info.major )} ),
+                             compiler_directives = cython_directives ),
 )
 
 

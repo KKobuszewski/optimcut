@@ -59,3 +59,41 @@ https://youtu.be/O918V86Grhc?si=vMTUiuFVCakP0Cmd
 https://youtu.be/FVZA28XZ7Mg?si=hUYZQ3ddfakdklXg
 
 https://youtu.be/vx2LNKx48vY?si=OeyYkN4I4hfOtcos
+
+
+
+
+
+
+
+
+
+
+# Building distribution
+
+## Create python package
+
+
+## Runnig pyinstaller
+
+Before you attempt to bundle to one file,
+make sure your app works correctly when bundled to one folder.
+
+It is is much easier to diagnose problems in one-folder mode.
+
+building with folder distribution
+```
+--workpath build --distpath dist
+```
+
+building with one file distribution
+```
+--onefile
+```
+
+enabling gui
+```
+--windowed
+```
+
+https://pyinstaller.org/en/stable/operating-mode.html
