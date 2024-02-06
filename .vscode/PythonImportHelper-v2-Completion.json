@@ -1,110 +1,11 @@
 [
     {
-        "label": "numpy",
+        "label": "os",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "matplotlib.pyplot",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "matplotlib.pyplot",
-        "description": "matplotlib.pyplot",
-        "detail": "matplotlib.pyplot",
-        "documentation": {}
-    },
-    {
-        "label": "matplotlib",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "matplotlib",
-        "description": "matplotlib",
-        "detail": "matplotlib",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "print_function",
-        "importPath": "__future__",
-        "description": "__future__",
-        "isExtraImport": true,
-        "detail": "__future__",
-        "documentation": {}
-    },
-    {
-        "label": "division",
-        "importPath": "__future__",
-        "description": "__future__",
-        "isExtraImport": true,
-        "detail": "__future__",
-        "documentation": {}
-    },
-    {
-        "label": "print_function",
-        "importPath": "__future__",
-        "description": "__future__",
-        "isExtraImport": true,
-        "detail": "__future__",
-        "documentation": {}
-    },
-    {
-        "label": "division",
-        "importPath": "__future__",
-        "description": "__future__",
-        "isExtraImport": true,
-        "detail": "__future__",
-        "documentation": {}
-    },
-    {
-        "label": "print_function",
-        "importPath": "__future__",
-        "description": "__future__",
-        "isExtraImport": true,
-        "detail": "__future__",
-        "documentation": {}
-    },
-    {
-        "label": "division",
-        "importPath": "__future__",
-        "description": "__future__",
-        "isExtraImport": true,
-        "detail": "__future__",
-        "documentation": {}
-    },
-    {
-        "label": "print_function",
-        "importPath": "__future__",
-        "description": "__future__",
-        "isExtraImport": true,
-        "detail": "__future__",
-        "documentation": {}
-    },
-    {
-        "label": "division",
-        "importPath": "__future__",
-        "description": "__future__",
-        "isExtraImport": true,
-        "detail": "__future__",
-        "documentation": {}
-    },
-    {
-        "label": "pytest",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pytest",
-        "description": "pytest",
-        "detail": "pytest",
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
         "documentation": {}
     },
     {
@@ -117,65 +18,12 @@
         "documentation": {}
     },
     {
-        "label": "_optimcut",
+        "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "_optimcut",
-        "description": "_optimcut",
-        "detail": "_optimcut",
-        "documentation": {}
-    },
-    {
-        "label": "subprocess",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "subprocess",
-        "description": "subprocess",
-        "detail": "subprocess",
-        "documentation": {}
-    },
-    {
-        "label": "matplotlib.animation",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "matplotlib.animation",
-        "description": "matplotlib.animation",
-        "detail": "matplotlib.animation",
-        "documentation": {}
-    },
-    {
-        "label": "matplotlib.gridspec",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "matplotlib.gridspec",
-        "description": "matplotlib.gridspec",
-        "detail": "matplotlib.gridspec",
-        "documentation": {}
-    },
-    {
-        "label": "GridSpec",
-        "importPath": "matplotlib.gridspec",
-        "description": "matplotlib.gridspec",
-        "isExtraImport": true,
-        "detail": "matplotlib.gridspec",
-        "documentation": {}
-    },
-    {
-        "label": "scipy.integrate",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "scipy.integrate",
-        "description": "scipy.integrate",
-        "detail": "scipy.integrate",
-        "documentation": {}
-    },
-    {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
         "documentation": {}
     },
     {
@@ -249,6 +97,159 @@
         "description": "PyQt5.QtWidgets",
         "isExtraImport": true,
         "detail": "PyQt5.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "division",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "division",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "division",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "division",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "_optimcut",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "_optimcut",
+        "description": "_optimcut",
+        "detail": "_optimcut",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib",
+        "description": "matplotlib",
+        "detail": "matplotlib",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.animation",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.animation",
+        "description": "matplotlib.animation",
+        "detail": "matplotlib.animation",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.gridspec",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.gridspec",
+        "description": "matplotlib.gridspec",
+        "detail": "matplotlib.gridspec",
+        "documentation": {}
+    },
+    {
+        "label": "scipy.integrate",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "scipy.integrate",
+        "description": "scipy.integrate",
+        "detail": "scipy.integrate",
+        "documentation": {}
+    },
+    {
+        "label": "dearpygui.dearpygui",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "dearpygui.dearpygui",
+        "description": "dearpygui.dearpygui",
+        "detail": "dearpygui.dearpygui",
         "documentation": {}
     },
     {
@@ -361,6 +362,33 @@
         "description": "Column-Generation.column_generation",
         "peekOfCode": "B = np.hstack( (A, np.array([[0],[0],[1],[1],[0],[0],[0]])) )\nprint(B)\nfig, ax = plt.subplots()\nplot_from_matrix(B, possible_lengths, fig=fig, ax=ax, max_width=9.0)\nplt.show()\nplt.close('all')",
         "detail": "Column-Generation.column_generation",
+        "documentation": {}
+    },
+    {
+        "label": "dpath",
+        "kind": 5,
+        "importPath": "examples.main",
+        "description": "examples.main",
+        "peekOfCode": "dpath = os.path.dirname( os.path.abspath(__file__) )\nprint(dpath)\nsys.path.append(dpath)\nif __name__ == '__main__':\n    root = tk.Tk()\n    root.withdraw()\n    # get file path\n    file_path = filedialog.askopenfilename()\n    # open file (only csv)\n    print('Opening file', file_path)",
+        "detail": "examples.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "examples.qt_file_dialog",
+        "description": "examples.qt_file_dialog",
+        "peekOfCode": "app = QApplication(sys.argv)\nMainWindow = QtWidgets.QMainWindow()\nfileName, _ = QtWidgets.QFileDialog.getOpenFileName(MainWindow, 'Open File', ' ', 'All Files (*);;Text Files (*.txt)')\nif fileName:\n    print(fileName)\n# here do some stuff\n# showing of the main window should occur after finishing the calculations\nMainWindow.show()\nsys.exit(app.exec_())",
+        "detail": "examples.qt_file_dialog",
+        "documentation": {}
+    },
+    {
+        "label": "MainWindow",
+        "kind": 5,
+        "importPath": "examples.qt_file_dialog",
+        "description": "examples.qt_file_dialog",
+        "peekOfCode": "MainWindow = QtWidgets.QMainWindow()\nfileName, _ = QtWidgets.QFileDialog.getOpenFileName(MainWindow, 'Open File', ' ', 'All Files (*);;Text Files (*.txt)')\nif fileName:\n    print(fileName)\n# here do some stuff\n# showing of the main window should occur after finishing the calculations\nMainWindow.show()\nsys.exit(app.exec_())",
+        "detail": "examples.qt_file_dialog",
         "documentation": {}
     },
     {
@@ -589,66 +617,12 @@
         "documentation": {}
     },
     {
-        "label": "dpath",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "dpath = os.path.dirname( os.path.abspath(__file__) )\nprint(dpath)\nsys.path.append(dpath)\nif __name__ == '__main__':\n    root = tk.Tk()\n    root.withdraw()\n    # get file path\n    file_path = filedialog.askopenfilename()\n    # open file (only csv)\n    print('Opening file', file_path)",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "gs",
-        "kind": 5,
-        "importPath": "matplotlib_gridspec",
-        "description": "matplotlib_gridspec",
-        "peekOfCode": "gs = GridSpec(2, 2, width_ratios=[1, 2], height_ratios=[4, 1])\n# Create the subplots\nax1 = plt.subplot(gs[0, 0])\nax2 = plt.subplot(gs[0, 1])\nax3 = plt.subplot(gs[1, :])\n# Plot some data on each subplot\nax1.plot([1, 2, 3], [4, 5, 6])\nax2.plot([1, 2, 3], [6, 5, 4])\nax3.plot([1, 2, 3], [5, 6, 4])\n# Show the plot",
-        "detail": "matplotlib_gridspec",
-        "documentation": {}
-    },
-    {
-        "label": "ax1",
-        "kind": 5,
-        "importPath": "matplotlib_gridspec",
-        "description": "matplotlib_gridspec",
-        "peekOfCode": "ax1 = plt.subplot(gs[0, 0])\nax2 = plt.subplot(gs[0, 1])\nax3 = plt.subplot(gs[1, :])\n# Plot some data on each subplot\nax1.plot([1, 2, 3], [4, 5, 6])\nax2.plot([1, 2, 3], [6, 5, 4])\nax3.plot([1, 2, 3], [5, 6, 4])\n# Show the plot\nplt.show()",
-        "detail": "matplotlib_gridspec",
-        "documentation": {}
-    },
-    {
-        "label": "ax2",
-        "kind": 5,
-        "importPath": "matplotlib_gridspec",
-        "description": "matplotlib_gridspec",
-        "peekOfCode": "ax2 = plt.subplot(gs[0, 1])\nax3 = plt.subplot(gs[1, :])\n# Plot some data on each subplot\nax1.plot([1, 2, 3], [4, 5, 6])\nax2.plot([1, 2, 3], [6, 5, 4])\nax3.plot([1, 2, 3], [5, 6, 4])\n# Show the plot\nplt.show()",
-        "detail": "matplotlib_gridspec",
-        "documentation": {}
-    },
-    {
-        "label": "ax3",
-        "kind": 5,
-        "importPath": "matplotlib_gridspec",
-        "description": "matplotlib_gridspec",
-        "peekOfCode": "ax3 = plt.subplot(gs[1, :])\n# Plot some data on each subplot\nax1.plot([1, 2, 3], [4, 5, 6])\nax2.plot([1, 2, 3], [6, 5, 4])\nax3.plot([1, 2, 3], [5, 6, 4])\n# Show the plot\nplt.show()",
-        "detail": "matplotlib_gridspec",
-        "documentation": {}
-    },
-    {
-        "label": "app",
-        "kind": 5,
-        "importPath": "qt_file_dialog",
-        "description": "qt_file_dialog",
-        "peekOfCode": "app = QApplication(sys.argv)\nMainWindow = QtWidgets.QMainWindow()\nfileName, _ = QtWidgets.QFileDialog.getOpenFileName(MainWindow, 'Open File', ' ', 'All Files (*);;Text Files (*.txt)')\nif fileName:\n    print(fileName)\n# here do some stuff\n# showing of the main window should occur after finishing the calculations\nMainWindow.show()\nsys.exit(app.exec_())",
-        "detail": "qt_file_dialog",
-        "documentation": {}
-    },
-    {
-        "label": "MainWindow",
-        "kind": 5,
-        "importPath": "qt_file_dialog",
-        "description": "qt_file_dialog",
-        "peekOfCode": "MainWindow = QtWidgets.QMainWindow()\nfileName, _ = QtWidgets.QFileDialog.getOpenFileName(MainWindow, 'Open File', ' ', 'All Files (*);;Text Files (*.txt)')\nif fileName:\n    print(fileName)\n# here do some stuff\n# showing of the main window should occur after finishing the calculations\nMainWindow.show()\nsys.exit(app.exec_())",
-        "detail": "qt_file_dialog",
+        "label": "callback",
+        "kind": 2,
+        "importPath": "cli",
+        "description": "cli",
+        "peekOfCode": "def callback(sender, app_data, user_data):\n    print(\"Sender: \", sender)\n    print(\"App Data: \", app_data)\n    with open(app_data['file_path_name']) as f:\n        data = np.loadtxt(f, delimiter=';')\n        element_lengths = np.array(data[:,0], dtype=np.float64)\n        element_counts  = np.array(data[:,1], dtype=np.int32)\n        state = []\n        for length, count in zip(element_lengths, element_counts):\n            for i in range(count):",
+        "detail": "cli",
         "documentation": {}
     },
     {
